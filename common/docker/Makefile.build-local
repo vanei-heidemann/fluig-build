@@ -1,0 +1,12 @@
+
+# Rule "docker-build-local"
+.PHONY: docker-build-local
+docker-build-local:
+	@for f in *; do \
+		if [ -d $${f}/docker ]; then \
+			echo $$f; \
+			echo "==================================="; \
+			cd $$f/docker && make build:local && cd ../..; \
+			echo " "; \
+		fi \
+	done

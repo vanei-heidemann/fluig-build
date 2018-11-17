@@ -1,0 +1,5 @@
+
+# Rule "mvn-clean-install:monitor"
+.PHONY: mvn-clean-install\:monitor
+mvn-clean-install\:monitor:
+	mvn clean install -Pmonitoring

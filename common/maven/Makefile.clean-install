@@ -1,0 +1,5 @@
+
+# Rule "mvn-clean-install"
+.PHONY: mvn-clean-install
+mvn-clean-install:
+	mvn clean install
