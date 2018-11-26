@@ -25,6 +25,7 @@ prepare-nextgen:
 	cat common/git/Makefile.gitpull >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitstatus >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/docker/Makefile.build-local >> ${NEXTGEN_BASE_DIR}/Makefile ; \
+	cat common/docker/Makefile.build-perfmon >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/maven/Makefile.pom >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/maven/Makefile.clean-install >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/maven/Makefile.clean-install-monitor >> ${NEXTGEN_BASE_DIR}/Makefile

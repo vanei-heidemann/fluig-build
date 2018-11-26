@@ -1,0 +1,14 @@
+
+# Rule "docker-build-perfmon"
+.PHONY: docker-build-perfmon
+docker-build-perfmon:
+	@for f in *; do \
+		if [ -d $${f}/docker ]; then \
+			if grep -q "perfmon" "$${f}/docker/Makefile" ; then \
+				echo $$f; \
+				echo "==================================="; \
+				cd $$f/docker && make build:perfmon && cd ../..; \
+				echo " "; \
+			fi \
+		fi \
+	done

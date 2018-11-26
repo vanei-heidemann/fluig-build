@@ -13,6 +13,10 @@ build: mvn-clean-install docker-build-local
 .PHONY: build\:monitor
 build\:monitor: mvn-clean-install\:monitor docker-build-local
 
+# Rule "build:perfmon"
+.PHONY: build\:perfmon
+build\:perfmon: mvn-clean-install docker-build-perfmon
+
 # Rule "run-demo-db"
 .PHONY: run-demo-db
 run-demo-db:
