@@ -4,11 +4,13 @@
 docker-build-perfmon:
 	@for f in *; do \
 		if [ -d $${f}/docker ]; then \
+			echo $$f; \
+			echo "==================================="; \
 			if grep -q "perfmon" "$${f}/docker/Makefile" ; then \
-				echo $$f; \
-				echo "==================================="; \
 				cd $$f/docker && make build:perfmon && cd ../..; \
-				echo " "; \
+			else ; \
+				cd $$f/docker && make build:local && cd ../..; \
 			fi \
+			echo " "; \
 		fi \
 	done
