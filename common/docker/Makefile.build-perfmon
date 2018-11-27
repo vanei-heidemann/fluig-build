@@ -8,9 +8,9 @@ docker-build-perfmon:
 			echo "==================================="; \
 			if grep -q "perfmon" "$${f}/docker/Makefile" ; then \
 				cd $$f/docker && make build:perfmon && cd ../..; \
-			else ; \
+			else \
 				cd $$f/docker && make build:local && cd ../..; \
-			fi \
+			fi ; \
 			echo " "; \
 		fi \
 	done
