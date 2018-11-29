@@ -41,6 +41,10 @@ fluig: maven-fluig docker-fluig
 .PHONY: lms
 lms: maven-lms docker-lms
 
+# Rule "build"
+.PHONY: build
+build: fluig lms
+
 # Rule "run-db"
 .PHONY: run-db
 run-db:
