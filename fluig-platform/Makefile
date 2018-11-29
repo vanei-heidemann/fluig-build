@@ -15,9 +15,14 @@ maven-fluig:
 maven-lms:
 	cd lms && mvn -DskipTests=true -Ddocker.skip.build clean install && $(MAKE) artifacts:generate && mvn docker:build && cd ..
 
+# Rule "maven-boards"
+.PHONY: maven-boards
+maven-boards:
+	cd boards && $(MAKE) maven:build && cd ..
+
 # Rule "maven"
 .PHONY: maven
-maven: maven-fluig maven-lms
+maven: maven-fluig maven-lms maven-boards
 
 # Rule "docker-fluig"
 .PHONY: docker-fluig
@@ -29,9 +34,14 @@ docker-fluig:
 docker-lms:
 	cd lms/docker && $(MAKE) build:local && cd ../..
 
+# Rule "docker-boards"
+.PHONY: docker-boards
+docker-boards:
+	cd boards/boards/docker && $(MAKE) build:local && cd ../../..
+
 # Rule "docker"
 .PHONY: docker
-docker: docker-fluig docker-lms
+docker: docker-fluig docker-lms docker-boards
 
 # Rule "fluig"
 .PHONY: fluig
@@ -41,9 +51,13 @@ fluig: maven-fluig docker-fluig
 .PHONY: lms
 lms: maven-lms docker-lms
 
+# Rule "boards"
+.PHONY: boards
+boards: maven-boards docker-boards
+
 # Rule "build"
 .PHONY: build
-build: fluig lms
+build: fluig lms boards
 
 # Rule "run-db"
 .PHONY: run-db
@@ -79,4 +93,5 @@ clear-volume:
 .PHONY: gitclone
 gitclone:
 	git clone ssh://git@git.fluig.com:7999/fp/fluig.git ; \
-	git clone ssh://git@git.fluig.com:7999/lms/lms.git
+	git clone ssh://git@git.fluig.com:7999/lms/lms.git ; \
+	git clone ssh://git@git.fluig.com:7999/fb/boards.git
