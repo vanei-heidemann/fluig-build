@@ -8,6 +8,8 @@ mvn-clean-install\:monitor:
 			echo "==================================="; \
 			if grep -q "<id>monitoring</id>" "$${f}/pom.xml" ; then \
 				cd $$f && mvn clean install -Pmonitoring && cd ..; \
+			else \
+				cd $$f && mvn clean install && cd ..; \
 			fi ; \
 			echo " "; \
 		fi \
