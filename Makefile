@@ -4,10 +4,10 @@
 #
 
 SHELL = /bin/bash
-BASE_DIR = ..
-NEXTGEN_BASE_DIR = ${BASE_DIR}/fluig-nextgen
-CORE_BASE_DIR = ${BASE_DIR}/fluig-core
-ONPREMISE_BASE_DIR = ${BASE_DIR}/fluig-onpremise
+BASE_DIR ?= ..
+NEXTGEN_BASE_DIR ?= ${BASE_DIR}/fluig-nextgen
+CORE_BASE_DIR ?= ${BASE_DIR}/fluig-core
+ONPREMISE_BASE_DIR ?= ${BASE_DIR}/fluig-onpremise
 
 # Rule "prepare-maven"
 .PHONY: prepare-maven
