@@ -45,7 +45,4 @@ gitclone-core:
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-scheduling.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-starter.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-storage.git ; \
-	git clone ssh://git@git.fluig.com:7999/fn/fluig-orca-commons.git ; \
-	git clone ssh://git@git.fluig.com:7999/fn/fluig-orca-rest-server.git ; \
-	git clone ssh://git@git.fluig.com:7999/fn/fluig-orca-sqs-listener.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-test.git
