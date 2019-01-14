@@ -6,7 +6,7 @@
 SHELL = /bin/bash
 BASE_DIR = ..
 NEXTGEN_BASE_DIR = ${BASE_DIR}/fluig-nextgen
-PLATFORM_BASE_DIR = ${BASE_DIR}/fluig-platform
+CORE_BASE_DIR = ${BASE_DIR}/fluig-core
 ONPREMISE_BASE_DIR = ${BASE_DIR}/fluig-onpremise
 
 # Rule "prepare-maven"
@@ -30,18 +30,18 @@ prepare-nextgen:
 	cat common/maven/Makefile.clean-install >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/maven/Makefile.clean-install-monitor >> ${NEXTGEN_BASE_DIR}/Makefile
 
-# Rule "prepare-platform"
-.PHONY: prepare-platform
-prepare-platform:
-	mkdir -p ${PLATFORM_BASE_DIR} ; \
-	cp fluig-platform/Makefile ${PLATFORM_BASE_DIR}/ ; \
-	cat common/git/Makefile.gitbranch >> ${PLATFORM_BASE_DIR}/Makefile ; \
-	cat common/git/Makefile.gitclean >> ${PLATFORM_BASE_DIR}/Makefile ; \
-	cat common/git/Makefile.gitmaster >> ${PLATFORM_BASE_DIR}/Makefile ; \
-	cat common/git/Makefile.gitpull >> ${PLATFORM_BASE_DIR}/Makefile ; \
-	cat common/git/Makefile.gitstatus >> ${PLATFORM_BASE_DIR}/Makefile ; \
-	cat common/maven/Makefile.pom >> ${PLATFORM_BASE_DIR}/Makefile ; \
-	cat common/maven/Makefile.clean-install >> ${PLATFORM_BASE_DIR}/Makefile
+# Rule "prepare-core"
+.PHONY: prepare-core
+prepare-core:
+	mkdir -p ${CORE_BASE_DIR} ; \
+	cp fluig-core/Makefile ${CORE_BASE_DIR}/ ; \
+	cat common/git/Makefile.gitbranch >> ${CORE_BASE_DIR}/Makefile ; \
+	cat common/git/Makefile.gitclean >> ${CORE_BASE_DIR}/Makefile ; \
+	cat common/git/Makefile.gitmaster >> ${CORE_BASE_DIR}/Makefile ; \
+	cat common/git/Makefile.gitpull >> ${CORE_BASE_DIR}/Makefile ; \
+	cat common/git/Makefile.gitstatus >> ${CORE_BASE_DIR}/Makefile ; \
+	cat common/maven/Makefile.pom >> ${CORE_BASE_DIR}/Makefile ; \
+	cat common/maven/Makefile.clean-install >> ${CORE_BASE_DIR}/Makefile
 
 # Rule "prepare-onpremise"
 .PHONY: prepare-onpremise
