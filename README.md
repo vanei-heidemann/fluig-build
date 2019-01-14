@@ -14,10 +14,10 @@ Após preparado o ambiente, é recomendado que entre na pasta criada (**cd ../fl
     + **make pom**<br>
     + **make build**<br>
 
-+ **make prepare-platform**<br>
-Prepara um ambiente de desenvolvimento do fluig Platform.<br>
-Por padrão, será criada a pasta fluig-platform um nivel acima da pasta corrente (ou seja, a pasta fluig-platform estará no mesmo nível da pasta corrente).<br>
-Após preparado o ambiente, é recomendado que entre na pasta criada (**cd ../fluig-platform**), e termine a criação do ambiente, executando os seguintes comandos:<br>
++ **make prepare-core**<br>
+Prepara um ambiente de desenvolvimento do fluig Core.<br>
+Por padrão, será criada a pasta fluig-core um nivel acima da pasta corrente (ou seja, a pasta fluig-core estará no mesmo nível da pasta corrente).<br>
+Após preparado o ambiente, é recomendado que entre na pasta criada (**cd ../fluig-core**), e termine a criação do ambiente, executando os seguintes comandos:<br>
     + **make gitclone**<br>
     + **make pom**<br>
     + **make mvn-clean-install**<br>
