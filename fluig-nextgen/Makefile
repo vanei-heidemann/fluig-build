@@ -39,7 +39,6 @@ gitclone-core:
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-demo.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-discovery.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-i18n.git ; \
-	git clone ssh://git@git.fluig.com:7999/fn/fluig-initializr.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-persistence.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-resource-server.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-scheduling.git ; \
