@@ -8,6 +8,7 @@ BASE_DIR ?= ..
 NEXTGEN_BASE_DIR ?= ${BASE_DIR}/fluig-nextgen
 CORE_BASE_DIR ?= ${BASE_DIR}/fluig-core
 ONPREMISE_BASE_DIR ?= ${BASE_DIR}/fluig-onpremise
+IP_ADDR ?= $(shell hostname -I | cut -d ' ' -f 1)
 
 # Rule "prepare-maven"
 .PHONY: prepare-maven
@@ -35,6 +36,11 @@ prepare-nextgen:
 prepare-core:
 	mkdir -p ${CORE_BASE_DIR} ; \
 	cp fluig-core/Makefile ${CORE_BASE_DIR}/ ; \
+	cp -R fluig-core/docker-minimal ${CORE_BASE_DIR}/ ; \
+	cp -R common/artemis ${CORE_BASE_DIR}/docker-minimal/ ; \
+	mkdir ${CORE_BASE_DIR}/docker-minimal/volume ; \
+	chmod 777 ${CORE_BASE_DIR}/docker-minimal/volume ; \
+	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-minimal/*.yml
 	cat common/git/Makefile.gitbranch >> ${CORE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitclean >> ${CORE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitmaster >> ${CORE_BASE_DIR}/Makefile ; \
