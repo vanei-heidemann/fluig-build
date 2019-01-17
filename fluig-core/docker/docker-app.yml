@@ -102,6 +102,102 @@ services:
         hard: 65536
     depends_on:
       - artemis-server
+  comments-application:
+    image: platform/fluig-comments:local
+    environment:
+      - FLUIG_URL=http://fluig-comments:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - FLUIG_SERVICE_BASE_URL=http://comments-application:8080
+      # database configuration
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_comments?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - FLUIG_DATABASE_USER_RO=fluig
+      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_comments?useSSL=false&useLegacyDatetimeCode=false
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+      - volume=./volume
+    networks:
+      - platform
+    extra_hosts:
+      - "fluig.local:IP_ADDR"
+      - "wcm.fluig.local:IP_ADDR"
+      - "teste.fluig.local:IP_ADDR"
+      - "javanei.fluig.local:IP_ADDR"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+  storage-application:
+    image: platform/fluig-storage:local
+    environment:
+      - FLUIG_URL=http://fluig-storage:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - FLUIG_SERVICE_BASE_URL=http://storage-application:8080
+      # database configuration
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_storage?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - FLUIG_DATABASE_USER_RO=fluig
+      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_storage?useSSL=false&useLegacyDatetimeCode=false
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+      - volume=./volume
+    networks:
+      - platform
+    extra_hosts:
+      - "fluig.local:IP_ADDR"
+      - "wcm.fluig.local:IP_ADDR"
+      - "teste.fluig.local:IP_ADDR"
+      - "javanei.fluig.local:IP_ADDR"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+  scheduling-application:
+    image: platform/fluig-scheduling:local
+    environment:
+      - FLUIG_URL=http://fluig-scheduling:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - FLUIG_SERVICE_BASE_URL=http://scheduling-application:8080
+      # database configuration
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_scheduling?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - FLUIG_DATABASE_USER_RO=fluig
+      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_scheduling?useSSL=false&useLegacyDatetimeCode=false
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+      - volume=./volume
+    networks:
+      - platform
+    extra_hosts:
+      - "fluig.local:IP_ADDR"
+      - "wcm.fluig.local:IP_ADDR"
+      - "teste.fluig.local:IP_ADDR"
+      - "javanei.fluig.local:IP_ADDR"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
   fluig-application:
     image: platform/fluig:local
     ports:
@@ -141,7 +237,46 @@ services:
         soft: 65536
         hard: 65536
     volumes:
-      # format is "<local folder or file>:<container folder or file>"
+      - ./volume:/opt/volume
+  lms-application:
+    image: platform/lms:local
+    #ports:
+    #   - 9797:9797
+    environment:
+      # database configuration
+      - LMS_DATABASE_SERVER=lms-dbserver
+      - LMS_DATABASE_PORT=3306
+      - LMS_DATABASE_USER=fluig
+      - LMS_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - LMS_DATABASE_NAME=lms
+      # lms configuration
+      - LMS_JMS_PASSWORD=platform
+      - LMS_ENDPOINT=lms-application:8080
+      - FLUIG_ENDPOINT=fluig-application:8080
+      - FLUIG_URL=http://fluig-application:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - LMS_HOST_ADDRESS_PUBLIC=lms-application
+      - FLUIG_COLLECTOR_APP_NAME=lms_app
+      - FLUIG_COLLECTOR_APP_TOKEN=12345678
+      - FLUIG_COLLECTOR_TYPE=LOG
+      - COLLECTOR_SERVER_URL=http://collector-server:8080/billing/api/v1
+    #command:
+    #   - --debug 9797
+    networks:
+      - platform
+    extra_hosts:
+      - "fluig.local:IP_ADDR"
+      - "wcm.fluig.local:IP_ADDR"
+      - "teste.fluig.local:IP_ADDR"
+      - "javanei.fluig.local:IP_ADDR"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
       - ./volume:/opt/volume
   artemis-server:
     image: platform/artemis-demo:local
@@ -165,7 +300,6 @@ services:
       - "javanei.fluig.local:IP_ADDR"
   nginx:
     image: docker.fluig.com/platform/nginx:latest
-    # map local port 8080 to 80 into the nginx container
     ports:
       - 8080:80
     networks:
@@ -179,7 +313,11 @@ services:
       - comm-application
       - i18n-application
       - discovery-application
+      - comments-application
+      - storage-application
+      - scheduling-application
       - fluig-application
+      - lms-application
     volumes:
       - ./nginx:/etc/nginx/sites/http/
 networks:
