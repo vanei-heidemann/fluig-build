@@ -20,7 +20,12 @@ Por padrão, será criada a pasta fluig-core um nivel acima da pasta corrente (o
 Após preparado o ambiente, é recomendado que entre na pasta criada (**cd ../fluig-core**), e termine a criação do ambiente, executando os seguintes comandos:<br>
     + **make gitclone**<br>
     + **make pom**<br>
-    + **make mvn-clean-install**<br>
+    + **make fluig**<br>
+    + **make lms**<br>
+Para executar o Fluig Core, os seguintes comandos devem ser executados:
+    + **make run-db**<br>
+    + **make run-migration**<br>
+    + **make run-app**<br>
 
 + **make prepare-onpremise**<br>
 Prepara um ambiente de desenvolvimento do fluig On Premise (Fluigão).<br>
