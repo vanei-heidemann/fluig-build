@@ -32,8 +32,6 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    depends_on:
-      - artemis-server
   comm-application:
     image: platform/fluig-comm:local
     environment:
@@ -66,8 +64,6 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    depends_on:
-      - artemis-server
   i18n-application:
     image: platform/fluig-i18n:local
     environment:
@@ -100,8 +96,6 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    depends_on:
-      - artemis-server
   comments-application:
     image: platform/fluig-comments:local
     environment:
@@ -278,26 +272,6 @@ services:
         hard: 65536
     volumes:
       - ./volume:/opt/volume
-  artemis-server:
-    image: platform/artemis-demo:local
-    ports:
-      - 8161:8161
-      - 61616:61616
-      - 8160:8160
-    environment:
-      - ARTEMIS_USERNAME=admin
-      - ARTEMIS_PASSWORD=admin
-      - ENABLE_JMX=true
-      - JMX_PORT=1199
-      - JMX_RMI_PORT=1198
-      - volume=./volume
-    networks:
-      - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
   nginx:
     image: docker.fluig.com/platform/nginx:latest
     ports:

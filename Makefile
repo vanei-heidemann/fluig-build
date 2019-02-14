@@ -38,13 +38,11 @@ prepare-core:
 	cp fluig-core/Makefile ${CORE_BASE_DIR}/ ; \
 
 	cp -R fluig-core/docker-minimal ${CORE_BASE_DIR}/ ; \
-	cp -R common/artemis ${CORE_BASE_DIR}/docker-minimal/ ; \
 	mkdir ${CORE_BASE_DIR}/docker-minimal/volume ; \
 	chmod 777 ${CORE_BASE_DIR}/docker-minimal/volume ; \
 	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-minimal/*.yml
 
 	cp -R fluig-core/docker ${CORE_BASE_DIR}/ ; \
-	cp -R common/artemis ${CORE_BASE_DIR}/docker/ ; \
 	mkdir ${CORE_BASE_DIR}/docker/volume ; \
 	chmod 777 ${CORE_BASE_DIR}/docker/volume ; \
 	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker/*.yml
