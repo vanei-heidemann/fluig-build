@@ -5,5 +5,6 @@ CREATE DATABASE IF NOT EXISTS fluig_discovery CHARACTER SET utf8 COLLATE utf8_ge
 CREATE DATABASE IF NOT EXISTS fluig_comments CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS fluig_storage CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS fluig_scheduling CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS fluig_tasks CHARACTER SET utf8 COLLATE utf8_general_ci;
 grant all on *.* to 'fluig'@'%' identified by 'OLyVu1gIwWmEr';
 FLUSH PRIVILEGES;
