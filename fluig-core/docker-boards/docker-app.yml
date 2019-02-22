@@ -1,0 +1,208 @@
+version: "3"
+services:
+  discovery-application:
+    image: platform/fluig-discovery:local
+    environment:
+      - FLUIG_URL=http://fluig-application:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - FLUIG_SERVICE_BASE_URL=http://discovery-application:8080
+      # database configuration
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_discovery?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - FLUIG_DATABASE_USER_RO=fluig
+      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_discovery?useSSL=false&useLegacyDatetimeCode=false
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+      - volume=./volume
+    networks:
+      - platform
+    extra_hosts:
+      - "fluig.local:IP_ADDR"
+      - "wcm.fluig.local:IP_ADDR"
+      - "learning.fluig.local:IP_ADDR"
+      - "boards.fluig.local:IP_ADDR"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+  i18n-application:
+    image: platform/fluig-i18n:local
+    environment:
+      - FLUIG_URL=http://fluig-application:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - FLUIG_SERVICE_BASE_URL=http://i18n-application:8080
+      # database configuration
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_i18n?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - FLUIG_DATABASE_USER_RO=fluig
+      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_i18n?useSSL=false&useLegacyDatetimeCode=false
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+      - volume=./volume
+    networks:
+      - platform
+    extra_hosts:
+      - "fluig.local:IP_ADDR"
+      - "wcm.fluig.local:IP_ADDR"
+      - "learning.fluig.local:IP_ADDR"
+      - "boards.fluig.local:IP_ADDR"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+  tasks-application:
+    image: platform/bpm-tasks:local
+    ports:
+      - 8790:8790
+    environment:
+      # database configuration
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_tasks?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - FLUIG_DATABASE_USER_RO=fluig
+      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_tasks?useSSL=false&useLegacyDatetimeCode=false
+      # platform configuration
+      - FLUIG_ENDPOINT=fluig-application:8080
+      - FLUIG_URL=http://fluig-application:8080
+      - FLUIG_SERVICE_BASE_URL=http://fluig-application:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+    volumes:
+      - ./volume:/opt/volume
+    networks:
+      - platform
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+  fluig-application:
+    image: platform/fluig:local
+    ports:
+      - 8787:8787
+    environment:
+      # database configuration
+      - FLUIG_DATABASE_SERVER=fluig-dbserver
+      - FLUIG_DATABASE_PORT=3306
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_NAME=fluig
+      # platform configuration
+      - FLUIG_JMS_PASSWORD=platform
+      - FLUIG_HOST_ADDRESS_PUBLIC=fluig-application
+      - IDENTITY_URL=https://app.customerfi.com
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      # fluig billing config
+      - FLUIG_COLLECTOR_APP_NAME=fluig_app
+      - FLUIG_COLLECTOR_APP_TOKEN=77717171
+      - FLUIG_COLLECTOR_TYPE=LOG
+      - COLLECTOR_SERVER_URL=http://collector-server:8080/billing/api/v1
+    command:
+      - --debug
+    networks:
+      - platform
+    extra_hosts:
+      - "fluig.local:IP_ADDR"
+      - "wcm.fluig.local:IP_ADDR"
+      - "learning.fluig.local:IP_ADDR"
+      - "boards.fluig.local:IP_ADDR"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      # format is "<local folder or file>:<container folder or file>"
+      - ./volume:/opt/volume
+  boards-application:
+    image: platform/boards:local
+    ports:
+      - 8788:8788
+    environment:
+      - API_KEY_ACCUSOFT=Ku_LuVEnykMXc-Y244w0pwv-FNzFKIrHhsNr1AzNKNcCCozsWGdf-RPwNmh9TonE
+      # database configuration
+      - BOARDS_DATABASE_USER=fluig
+      - BOARDS_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - BOARDS_DATABASE_SERVER=boards-dbserver
+      - BOARDS_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/boards?useSSL=false
+      - BOARDS_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - BOARDS_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/boards?useSSL=false
+      - BOARDS_DATABASE_USER_RO=fluig
+      - BOARDS_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
+      - BOARDS_DATABASE_PORT=3306
+      - BOARDS_DATABASE_NAME=boards
+      # boards configuration
+      - BOARDS_JMS_PASSWORD=platform
+      - BOARDS_ENDPOINT=boards-application:8080
+      - FLUIG_ENDPOINT=fluig-application:8080
+      - FLUIG_URL=http://fluig-application:8080
+      - BOARDS_HOST_ADDRESS_PUBLIC=boards-application
+      - FLUIG_SERVICE_BASE_URL=http://fluig-application:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - FLUIG_STORAGE_URL=http://storage-application:8080
+      - FLUIG_TASKS_URL=http://tasks-application:8080
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+      # Storage
+      - FLUIG_STORAGE_FILE_SIZE=15MB
+      - FLUIG_STORAGE_REQUEST_SIZE=15MB
+      - volume=./volume
+    networks:
+      - platform
+    extra_hosts:
+      - "fluig.local:IP_ADDR"
+      - "wcm.fluig.local:IP_ADDR"
+      - "learning.fluig.local:IP_ADDR"
+      - "boards.fluig.local:IP_ADDR"
+  nginx:
+    image: docker.fluig.com/platform/nginx:latest
+    # map local port 8080 to 80 into the nginx container
+    ports:
+      - 8080:80
+    networks:
+      - platform
+    extra_hosts:
+      - "fluig.local:IP_ADDR"
+      - "wcm.fluig.local:IP_ADDR"
+      - "learning.fluig.local:IP_ADDR"
+      - "boards.fluig.local:IP_ADDR"
+    depends_on:
+      - i18n-application
+      - discovery-application
+      - fluig-application
+      - boards-application
+    volumes:
+      - ./nginx:/etc/nginx/sites/http/
+networks:
+  platform:
