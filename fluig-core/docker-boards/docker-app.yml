@@ -153,7 +153,7 @@ services:
       # database configuration
       - BOARDS_DATABASE_USER=fluig
       - BOARDS_DATABASE_PASSWORD=OLyVu1gIwWmEr
-      - BOARDS_DATABASE_SERVER=boards-dbserver
+      - BOARDS_DATABASE_SERVER=fluig-dbserver
       - BOARDS_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/boards?useSSL=false
       - BOARDS_DATABASE_DRIVER=com.mysql.jdbc.Driver
       - BOARDS_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/boards?useSSL=false
@@ -201,6 +201,7 @@ services:
       - i18n-application
       - discovery-application
       - fluig-application
+      - tasks-application
       - boards-application
     volumes:
       - ./nginx:/etc/nginx/sites/http/
