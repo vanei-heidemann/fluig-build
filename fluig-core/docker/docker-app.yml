@@ -32,42 +32,6 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    depends_on:
-      - artemis-server
-  comm-application:
-    image: platform/fluig-comm:local
-    environment:
-      - FLUIG_URL=http://fluig-application:8080
-      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
-      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
-      - FLUIG_SERVICE_BASE_URL=http://comm-application:8080
-      # database configuration
-      - FLUIG_DATABASE_USER=fluig
-      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
-      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_comm?useSSL=false&useLegacyDatetimeCode=false
-      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
-      - FLUIG_DATABASE_USER_RO=fluig
-      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
-      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_comm?useSSL=false&useLegacyDatetimeCode=false
-      # Autenticacao
-      - fluig.resource.jwk-enabled=true
-      - volume=./volume
-    networks:
-      - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
-    depends_on:
-      - artemis-server
   i18n-application:
     image: platform/fluig-i18n:local
     environment:
@@ -100,8 +64,6 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    depends_on:
-      - artemis-server
   comments-application:
     image: platform/fluig-comments:local
     environment:
@@ -198,6 +160,38 @@ services:
       nofile:
         soft: 65536
         hard: 65536
+  tasks-application:
+    image: platform/bpm-tasks:local
+    ports:
+      - 8790:8790
+    environment:
+      # database configuration
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_tasks?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - FLUIG_DATABASE_USER_RO=fluig
+      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_tasks?useSSL=false&useLegacyDatetimeCode=false
+      # platform configuration
+      - FLUIG_ENDPOINT=fluig-application:8080
+      - FLUIG_URL=http://fluig-application:8080
+      - FLUIG_SERVICE_BASE_URL=http://fluig-application:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+    volumes:
+      - ./volume:/opt/volume
+    networks:
+      - platform
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
   fluig-application:
     image: platform/fluig:local
     ports:
@@ -215,11 +209,13 @@ services:
       - IDENTITY_URL=https://app.customerfi.com
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
-      # fluig billing config
-      - FLUIG_COLLECTOR_APP_NAME=fluig_app
-      - FLUIG_COLLECTOR_APP_TOKEN=77717171
-      - FLUIG_COLLECTOR_TYPE=LOG
-      - COLLECTOR_SERVER_URL=http://collector-server:8080/billing/api/v1
+      # cloud config
+      - DOMAIN_NAME=${DOMAIN_NAME:-XXX}
+      - CLOUD_PROVIDER=${CLOUD_PROVIDER:-NONE}
+      # aws config
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-XXX}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-XXX}
+      - AWS_HOST_ZONE_ID=${AWS_HOST_ZONE_ID:-XXX}
     command:
       - --debug
     networks:
@@ -278,18 +274,39 @@ services:
         hard: 65536
     volumes:
       - ./volume:/opt/volume
-  artemis-server:
-    image: platform/artemis-demo:local
+  boards-application:
+    image: platform/boards:local
     ports:
-      - 8161:8161
-      - 61616:61616
-      - 8160:8160
+      - 8788:8788
     environment:
-      - ARTEMIS_USERNAME=admin
-      - ARTEMIS_PASSWORD=admin
-      - ENABLE_JMX=true
-      - JMX_PORT=1199
-      - JMX_RMI_PORT=1198
+      - API_KEY_ACCUSOFT=Ku_LuVEnykMXc-Y244w0pwv-FNzFKIrHhsNr1AzNKNcCCozsWGdf-RPwNmh9TonE
+      # database configuration
+      - BOARDS_DATABASE_USER=fluig
+      - BOARDS_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - BOARDS_DATABASE_SERVER=boards-dbserver
+      - BOARDS_DATABASE_URL=jdbc:mysql://boards-dbserver:3306/boards?useSSL=false
+      - BOARDS_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - BOARDS_DATABASE_URL_RO=jdbc:mysql://boards-dbserver:3306/boards?useSSL=false
+      - BOARDS_DATABASE_USER_RO=fluig
+      - BOARDS_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
+      - BOARDS_DATABASE_PORT=3306
+      - BOARDS_DATABASE_NAME=boards
+      # boards configuration
+      - BOARDS_JMS_PASSWORD=platform
+      - BOARDS_ENDPOINT=boards-application:8080
+      - FLUIG_ENDPOINT=fluig-application:8080
+      - FLUIG_URL=http://fluig-application:8080
+      - BOARDS_HOST_ADDRESS_PUBLIC=boards-application
+      - FLUIG_SERVICE_BASE_URL=http://fluig-application:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - FLUIG_STORAGE_URL=http://storage-application:8080
+      - FLUIG_TASKS_URL=http://tasks-application:8080
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+      # Storage
+      - FLUIG_STORAGE_FILE_SIZE=15MB
+      - FLUIG_STORAGE_REQUEST_SIZE=15MB
       - volume=./volume
     networks:
       - platform
@@ -310,7 +327,6 @@ services:
       - "learning.fluig.local:IP_ADDR"
       - "boards.fluig.local:IP_ADDR"
     depends_on:
-      - comm-application
       - i18n-application
       - discovery-application
       - comments-application
@@ -318,6 +334,8 @@ services:
       - scheduling-application
       - fluig-application
       - lms-application
+      - boards-application
+      - tasks-application
     volumes:
       - ./nginx:/etc/nginx/sites/http/
 networks:
