@@ -209,11 +209,13 @@ services:
       - IDENTITY_URL=https://app.customerfi.com
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
-      # fluig billing config
-      - FLUIG_COLLECTOR_APP_NAME=fluig_app
-      - FLUIG_COLLECTOR_APP_TOKEN=77717171
-      - FLUIG_COLLECTOR_TYPE=LOG
-      - COLLECTOR_SERVER_URL=http://collector-server:8080/billing/api/v1
+      # cloud config
+      - DOMAIN_NAME=${DOMAIN_NAME:-XXX}
+      - CLOUD_PROVIDER=${CLOUD_PROVIDER:-NONE}
+      # aws config
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-XXX}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-XXX}
+      - AWS_HOST_ZONE_ID=${AWS_HOST_ZONE_ID:-XXX}
     command:
       - --debug
     networks:
