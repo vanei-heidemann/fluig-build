@@ -335,6 +335,7 @@ services:
       - fluig-application
       - lms-application
       - boards-application
+      - tasks-application
     volumes:
       - ./nginx:/etc/nginx/sites/http/
 networks:
