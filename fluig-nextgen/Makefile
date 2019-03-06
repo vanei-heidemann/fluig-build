@@ -22,10 +22,25 @@ build\:perfmon: mvn-clean-install docker-build-perfmon
 run-demo-db:
 	cd fluig-demo/docker && docker-compose -f docker-db.yml up
 
+# Rule "stop-demo-db"
+.PHONY: stop-demo-db
+stop-demo-db:
+	cd fluig-demo/docker && docker-compose -f docker-db.yml down
+
 # Rule "run-demo-app"
 .PHONY: run-demo-app
 run-demo-app:
 	cd fluig-demo/docker && docker-compose -f docker-app.yml up
+
+# Rule "stop-demo-app"
+.PHONY: stop-demo-app
+stop-demo-app:
+	cd fluig-demo/docker && docker-compose -f docker-app.yml down
+
+# Rule "clear-demo-volume"
+.PHONY: clear-demo-volume
+clear-demo-volume:
+	cd fluig-demo/docker && docker system prune --volumes -f && sudo rm -rf volume && mkdir volume && chmod 777 volume
 
 # Rule "gitclone-core"
 .PHONY: gitclone-core

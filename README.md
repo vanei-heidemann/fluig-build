@@ -22,6 +22,7 @@ Após preparado o ambiente, é recomendado que entre na pasta criada (**cd ../fl
     + **make pom**<br>
     + **make fluig**<br>
     + **make lms**<br>
+    + **make boards**<br>
 Para executar o Fluig Core, os seguintes comandos devem ser executados:
     + **make run-db**<br>
     + **make run-migration**<br>
