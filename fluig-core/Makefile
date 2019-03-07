@@ -89,6 +89,31 @@ stop-app:
 clear-volume:
 	cd docker && docker system prune --volumes -f && sudo rm -rf volume && mkdir volume && chmod 777 volume
 
+# Rule "run-minimal-db"
+.PHONY: run-minimal-db
+run-minimal-db:
+	cd docker-minimal && docker-compose -f docker-db.yml up
+
+# Rule "stop-minimal-db"
+.PHONY: stop-minimal-db
+stop-minimal-db:
+	cd docker-minimal && docker-compose -f docker-db.yml down
+
+# Rule "run-minimal-app"
+.PHONY: run-minimal-app
+run-minimal-app:
+	cd docker-minimal && docker-compose -f docker-app.yml up
+
+# Rule "stop-minimal-app"
+.PHONY: stop-minimal-app
+stop-minimal-app:
+	cd docker-minimal && docker-compose -f docker-app.yml down
+
+# Rule "clear-minimal-volume"
+.PHONY: clear-minimal-volume
+clear-minimal-volume:
+	cd docker-minimal && docker system prune --volumes -f && sudo rm -rf volume && mkdir volume && chmod 777 volume
+
 # Rule "gitclone"
 .PHONY: gitclone
 gitclone:
