@@ -3,11 +3,9 @@ services:
   i18n-migration:
     image: platform/fluig-i18n-dbmigration:local
     environment:
-      # database configuration
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
       - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_i18n?useSSL=false&useLegacyDatetimeCode=false
-      - FLUIG_DATABASE_DRIVER=fluig-dbserver
       - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
     networks:
       - platform
@@ -17,19 +15,7 @@ services:
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
       - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_discovery?useSSL=false&useLegacyDatetimeCode=false
-      - FLUIG_DATABASE_DRIVER=fluig-dbserver
       - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
-    networks:
-      - platform
-  lms-migration:
-    image: platform/lms/migration:local
-    environment:
-      # database configuration
-      - LMS_DATABASE_SERVER=lms-dbserver
-      - LMS_DATABASE_PORT=3306
-      - LMS_DATABASE_USER=fluig
-      - LMS_DATABASE_PASSWORD=OLyVu1gIwWmEr
-      - LMS_DATABASE_NAME=lms
     networks:
       - platform
 networks:

@@ -10,6 +10,11 @@ SHELL = /bin/bash
 run-db:
 	docker-compose -f docker-db.yml up
 
+# Rule "run-migration"
+.PHONY: run-migration
+run-migration:
+	docker-compose -f docker-migration.yml up
+
 # Rule "run-app"
 .PHONY: run-app
 run-app:
