@@ -124,10 +124,6 @@ services:
       - FLUIG_URL=http://fluig-application:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - LMS_HOST_ADDRESS_PUBLIC=lms-application
-      - FLUIG_COLLECTOR_APP_NAME=lms_app
-      - FLUIG_COLLECTOR_APP_TOKEN=12345678
-      - FLUIG_COLLECTOR_TYPE=LOG
-      - COLLECTOR_SERVER_URL=http://collector-server:8080/billing/api/v1
     #command:
     #   - --debug 9797
     networks:
