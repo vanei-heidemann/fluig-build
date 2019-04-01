@@ -48,7 +48,7 @@ gitclone-core:
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-api.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-comments.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-commons-client.git ; \
-	git clone ssh://git@git.fluig.com:7999/fn/fluig-communication.git ; \
+#	git clone ssh://git@git.fluig.com:7999/fn/fluig-communication.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-core.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-database-update.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-demo.git ; \
