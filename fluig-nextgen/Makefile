@@ -60,5 +60,28 @@ gitclone-core:
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-starter.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-storage.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-test.git ; \
+	git clone ssh://git@git.fluig.com:7999/fn/fluig-broker.git ; \
+	git clone ssh://git@git.fluig.com:7999/fn/fluig-templates.git
+
+# Rule "gitclone-pages"
+.PHONY: gitclone-pages
+gitclone-pages:
+	git clone ssh://git@git.fluig.com:7999/fweb/pages.git
+
+# Rule "gitclone-bpm"
+.PHONY: gitclone-bpm
+gitclone-bpm:
+	git clone ssh://git@git.fluig.com:7999/fbpm/fluig-brm.git ; \
 	git clone ssh://git@git.fluig.com:7999/fbpm/fluig-todolist.git ; \
+	git clone ssh://git@git.fluig.com:7999/fbpm/fluig-forms.git
+
+# Rule "gitclone-fws"
+.PHONY: gitclone-fws
+gitclone-fws:
+	git clone ssh://git@git.fluig.com:7999/fbm/accounts.git ; \
+	git clone ssh://git@git.fluig.com:7999/fbm/business-manager.git ; \
 	git clone ssh://git@git.fluig.com:7999/fbm/locksmith.git
+
+# Rule "gitclone-all"
+.PHONY: gitclone-all
+gitclone-all: gitclone-core gitclone-pages gitclone-bpm gitclone-fws
