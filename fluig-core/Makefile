@@ -119,4 +119,6 @@ clear-minimal-volume:
 gitclone:
 	git clone ssh://git@git.fluig.com:7999/fp/fluig.git ; \
 	git clone ssh://git@git.fluig.com:7999/lms/lms.git ; \
-	git clone ssh://git@git.fluig.com:7999/fb/boards.git
+	git clone ssh://git@git.fluig.com:7999/lms/learning-widget.git ; \
+	git clone ssh://git@git.fluig.com:7999/fb/boards.git ; \
+	git clone ssh://git@git.fluig.com:7999/fb/boards-widget.git
