@@ -17,14 +17,8 @@ services:
       - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_discovery?useSSL=false&useLegacyDatetimeCode=false
       # Autenticacao
       - fluig.resource.jwk-enabled=true
-      - volume=./volume
     networks:
       - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
     ulimits:
       memlock:
         soft: -1
@@ -49,14 +43,8 @@ services:
       - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_i18n?useSSL=false&useLegacyDatetimeCode=false
       # Autenticacao
       - fluig.resource.jwk-enabled=true
-      - volume=./volume
     networks:
       - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
     ulimits:
       memlock:
         soft: -1
@@ -81,14 +69,8 @@ services:
       - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_comments?useSSL=false&useLegacyDatetimeCode=false
       # Autenticacao
       - fluig.resource.jwk-enabled=true
-      - volume=./volume
     networks:
       - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
     ulimits:
       memlock:
         soft: -1
@@ -113,14 +95,8 @@ services:
       - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_storage?useSSL=false&useLegacyDatetimeCode=false
       # Autenticacao
       - fluig.resource.jwk-enabled=true
-      - volume=./volume
     networks:
       - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
     ulimits:
       memlock:
         soft: -1
@@ -145,14 +121,8 @@ services:
       - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_scheduling?useSSL=false&useLegacyDatetimeCode=false
       # Autenticacao
       - fluig.resource.jwk-enabled=true
-      - volume=./volume
     networks:
       - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
     ulimits:
       memlock:
         soft: -1
@@ -181,8 +151,6 @@ services:
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       # Autenticacao
       - fluig.resource.jwk-enabled=true
-    volumes:
-      - ./volume:/opt/volume
     networks:
       - platform
     ulimits:
@@ -220,11 +188,6 @@ services:
       - --debug
     networks:
       - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
     ulimits:
       memlock:
         soft: -1
@@ -256,11 +219,6 @@ services:
     #   - --debug 9797
     networks:
       - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
     ulimits:
       memlock:
         soft: -1
@@ -303,25 +261,14 @@ services:
       # Storage
       - FLUIG_STORAGE_FILE_SIZE=15MB
       - FLUIG_STORAGE_REQUEST_SIZE=15MB
-      - volume=./volume
     networks:
       - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
   nginx:
     image: docker.fluig.com/platform/nginx:latest
     ports:
       - 8080:80
     networks:
       - platform
-    extra_hosts:
-      - "fluig.local:IP_ADDR"
-      - "wcm.fluig.local:IP_ADDR"
-      - "learning.fluig.local:IP_ADDR"
-      - "boards.fluig.local:IP_ADDR"
     depends_on:
       - i18n-application
       - discovery-application
