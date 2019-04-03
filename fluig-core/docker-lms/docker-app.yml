@@ -1,6 +1,7 @@
 version: "3"
 services:
   discovery-application:
+    #image: docker.fluig.com/platform/fluig-discovery:${discoveryVersion}
     image: platform/fluig-discovery:local
     environment:
       - FLUIG_URL=http://fluig-application:8080
@@ -27,6 +28,7 @@ services:
         soft: 65536
         hard: 65536
   i18n-application:
+    #image: docker.fluig.com/platform/fluig-i18n:${i18nVersion}
     image: platform/fluig-i18n:local
     environment:
       - FLUIG_URL=http://fluig-application:8080
@@ -53,6 +55,7 @@ services:
         soft: 65536
         hard: 65536
   fluig-application:
+    #image: docker.fluig.com/platform/fluig:${fluigVersion}
     image: platform/fluig:local
     ports:
       - 8787:8787
@@ -90,6 +93,7 @@ services:
     volumes:
       - ./volume:/opt/volume
   lms-application:
+    #image: docker.fluig.com/platform/lms:${learningVersion}
     image: platform/lms:local
     #ports:
     #   - 9797:9797

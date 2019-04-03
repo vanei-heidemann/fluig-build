@@ -1,6 +1,7 @@
 version: "3"
 services:
   lms-migration:
+    #image: docker.fluig.com/platform/lms/migration:${learningVersion}
     image: platform/lms/migration:local
     environment:
       # database configuration

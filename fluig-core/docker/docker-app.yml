@@ -1,6 +1,7 @@
 version: "3"
 services:
   discovery-application:
+    #image: docker.fluig.com/platform/fluig-discovery:${discoveryVersion}
     image: platform/fluig-discovery:local
     environment:
       - FLUIG_URL=http://fluig-application:8080
@@ -27,6 +28,7 @@ services:
         soft: 65536
         hard: 65536
   i18n-application:
+    #image: docker.fluig.com/platform/fluig-i18n:${i18nVersion}
     image: platform/fluig-i18n:local
     environment:
       - FLUIG_URL=http://fluig-application:8080
@@ -53,6 +55,7 @@ services:
         soft: 65536
         hard: 65536
   comments-application:
+    #image: docker.fluig.com/platform/fluig-comments:${commentsVersion}
     image: platform/fluig-comments:local
     environment:
       - FLUIG_URL=http://fluig-application:8080
@@ -79,6 +82,7 @@ services:
         soft: 65536
         hard: 65536
   storage-application:
+    #image: docker.fluig.com/platform/fluig-storage:${storageVersion}
     image: platform/fluig-storage:local
     environment:
       - FLUIG_URL=http://fluig-application:8080
@@ -105,6 +109,7 @@ services:
         soft: 65536
         hard: 65536
   scheduling-application:
+    #image: docker.fluig.com/platform/fluig-scheduling:${schedulingVersion}
     image: platform/fluig-scheduling:local
     environment:
       - FLUIG_URL=http://fluig-application:8080
@@ -131,6 +136,7 @@ services:
         soft: 65536
         hard: 65536
   tasks-application:
+    #image: docker.fluig.com/platform/bpm-tasks:${tasksVersion}
     image: platform/bpm-tasks:local
     ports:
       - 8790:8790
@@ -161,6 +167,7 @@ services:
         soft: 65536
         hard: 65536
   fluig-application:
+    #image: docker.fluig.com/platform/fluig:${fluigVersion}
     image: platform/fluig:local
     ports:
       - 8787:8787
@@ -198,6 +205,7 @@ services:
     volumes:
       - ./volume:/opt/volume
   lms-application:
+    #image: docker.fluig.com/platform/lms:${learningVersion}
     image: platform/lms:local
     #ports:
     #   - 9797:9797
@@ -229,6 +237,7 @@ services:
     volumes:
       - ./volume:/opt/volume
   boards-application:
+    #image: docker.fluig.com/platform/boards:${boardsVersion}
     image: platform/boards:local
     ports:
       - 8788:8788
