@@ -105,6 +105,7 @@ services:
       - IDENTITY_URL=https://app.customerfi.com
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - FLUIG_URL=http://fluig-application:8080
       # cloud config
       - DOMAIN_NAME=${DOMAIN_NAME:-XXX}
       - CLOUD_PROVIDER=${CLOUD_PROVIDER:-NONE}
