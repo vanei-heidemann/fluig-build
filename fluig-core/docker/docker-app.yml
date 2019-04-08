@@ -8,6 +8,8 @@ services:
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_SERVICE_BASE_URL=http://discovery-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # database configuration
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
@@ -35,6 +37,8 @@ services:
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_SERVICE_BASE_URL=http://i18n-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # database configuration
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
@@ -62,6 +66,8 @@ services:
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_SERVICE_BASE_URL=http://comments-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # database configuration
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
@@ -89,6 +95,8 @@ services:
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_SERVICE_BASE_URL=http://storage-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # database configuration
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
@@ -116,6 +124,8 @@ services:
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_SERVICE_BASE_URL=http://scheduling-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # database configuration
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
@@ -149,6 +159,8 @@ services:
       - FLUIG_DATABASE_USER_RO=fluig
       - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
       - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_tasks?useSSL=false&useLegacyDatetimeCode=false
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # platform configuration
       - FLUIG_ENDPOINT=fluig-application:8080
       - FLUIG_URL=http://fluig-application:8080
@@ -185,6 +197,8 @@ services:
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_URL=http://fluig-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # cloud config
       - DOMAIN_NAME=${DOMAIN_NAME:-XXX}
       - CLOUD_PROVIDER=${CLOUD_PROVIDER:-NONE}
@@ -266,6 +280,8 @@ services:
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_STORAGE_URL=http://storage-application:8080
       - FLUIG_TASKS_URL=http://tasks-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # Autenticacao
       - fluig.resource.jwk-enabled=true
       # Storage

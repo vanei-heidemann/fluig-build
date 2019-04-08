@@ -8,6 +8,8 @@ services:
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_SERVICE_BASE_URL=http://discovery-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # database configuration
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
@@ -35,6 +37,8 @@ services:
       - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_SERVICE_BASE_URL=http://i18n-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # database configuration
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
@@ -66,6 +70,8 @@ services:
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
       - FLUIG_DATABASE_NAME=fluig
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
       # platform configuration
       - FLUIG_JMS_PASSWORD=platform
       - FLUIG_HOST_ADDRESS_PUBLIC=fluig-application
