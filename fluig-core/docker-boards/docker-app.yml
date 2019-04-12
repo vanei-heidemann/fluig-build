@@ -114,6 +114,7 @@ services:
       - FLUIG_URL=http://fluig-application:8080
       #- SKIP_DISCOVERY_REGISTRATION=true
       #- SKIP_I18N_REGISTRATION=true
+      #- SKIP_FLUIG_UPDATE_THEMES=true
       # cloud config
       - DOMAIN_NAME=${DOMAIN_NAME:-XXX}
       - CLOUD_PROVIDER=${CLOUD_PROVIDER:-NONE}

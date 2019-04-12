@@ -199,6 +199,7 @@ services:
       - FLUIG_URL=http://fluig-application:8080
       #- SKIP_DISCOVERY_REGISTRATION=true
       #- SKIP_I18N_REGISTRATION=true
+      #- SKIP_FLUIG_UPDATE_THEMES=true
       # cloud config
       - DOMAIN_NAME=${DOMAIN_NAME:-XXX}
       - CLOUD_PROVIDER=${CLOUD_PROVIDER:-NONE}
@@ -238,8 +239,10 @@ services:
       - FLUIG_URL=http://fluig-application:8080
       - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - LMS_HOST_ADDRESS_PUBLIC=lms-application
+      - CLOUD_REPOSITORY=false
     #command:
     #   - --debug 9797
+    restart: always
     networks:
       - platform
     ulimits:
@@ -249,6 +252,20 @@ services:
       nofile:
         soft: 65536
         hard: 65536
+    volumes:
+      - ./volume:/opt/volume
+  learning-volume-update:
+    #image: docker.fluig.com/platform/lms/volume-update:${learningVersion}
+    image: platform/lms/volume-update:local
+    environment:
+      # database configuration
+      - LMS_DATABASE_SERVER=lms-dbserver
+      - LMS_DATABASE_PORT=3306
+      - LMS_DATABASE_USER=fluig
+      - LMS_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - LMS_DATABASE_NAME=lms
+    networks:
+      - platform
     volumes:
       - ./volume:/opt/volume
   boards-application:
