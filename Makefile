@@ -23,6 +23,7 @@ prepare-nextgen:
 	cat common/git/Makefile.gitbranch >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitclean >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitmaster >> ${NEXTGEN_BASE_DIR}/Makefile ; \
+	cat common/git/Makefile.gitstaging >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitpull >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitstatus >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/docker/Makefile.build-local >> ${NEXTGEN_BASE_DIR}/Makefile ; \
@@ -60,6 +61,7 @@ prepare-core:
 	cat common/git/Makefile.gitbranch >> ${CORE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitclean >> ${CORE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitmaster >> ${CORE_BASE_DIR}/Makefile ; \
+	cat common/git/Makefile.gitstaging >> ${CORE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitpull >> ${CORE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitstatus >> ${CORE_BASE_DIR}/Makefile ; \
 	cat common/maven/Makefile.pom >> ${CORE_BASE_DIR}/Makefile ; \
@@ -73,6 +75,7 @@ prepare-onpremise:
 	cat common/git/Makefile.gitbranch >> ${ONPREMISE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitclean >> ${ONPREMISE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitmaster >> ${ONPREMISE_BASE_DIR}/Makefile ; \
+	cat common/git/Makefile.gitstaging >> ${ONPREMISE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitdevelop >> ${ONPREMISE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitpull >> ${ONPREMISE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitstatus >> ${ONPREMISE_BASE_DIR}/Makefile ; \
