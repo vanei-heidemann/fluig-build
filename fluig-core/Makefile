@@ -57,7 +57,12 @@ boards: maven-boards docker-boards
 
 # Rule "build"
 .PHONY: build
-build: fluig lms boards
+build:
+	@for f in *; do \
+        if [ -f $${f}/Makefile ]; then \
+            cd $$f && make -s build -e VERSION=local && cd ..; \
+        fi \
+    done
 
 # Rule "run-db"
 .PHONY: run-db

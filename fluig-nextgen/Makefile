@@ -7,7 +7,12 @@ SHELL = /bin/bash
 
 # Rule "build"
 .PHONY: build
-build: mvn-clean-install docker-build-local
+build:
+	@for f in *; do \
+        if [ -f $${f}/Makefile ]; then \
+            cd $$f && make -s build -e VERSION=local && cd ..; \
+        fi \
+    done
 
 # Rule "build:monitor"
 .PHONY: build\:monitor
