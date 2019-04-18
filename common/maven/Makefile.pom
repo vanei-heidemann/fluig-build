@@ -26,4 +26,36 @@ pom:
                 fi \
         done
 	@echo "    </modules>" >> pom.xml
+	@echo "    <build>" >> pom.xml
+	@echo "    	<finalName>${project.artifactId}</finalName>" >> pom.xml
+	@echo "    	<plugins>" >> pom.xml
+	@echo "    		<plugin>" >> pom.xml
+	@echo "    			<groupId>org.codehaus.mojo</groupId>" >> pom.xml
+	@echo "    			<artifactId>flatten-maven-plugin</artifactId>" >> pom.xml
+	@echo "    			<version>1.1.0</version>" >> pom.xml
+	@echo "    			<configuration>" >> pom.xml
+	@echo "    				<updatePomFile>true</updatePomFile>" >> pom.xml
+	@echo "                 <flattenMode>resolveCiFriendliesOnly</flattenMode>" >> pom.xml
+	@echo "    			</configuration>" >> pom.xml
+	@echo "    			<executions>" >> pom.xml
+	@echo "    				<execution>" >> pom.xml
+	@echo "    					<id>flatten</id>" >> pom.xml
+	@echo "    					<phase>process-resources</phase>" >> pom.xml
+	@echo "    					<goals>" >> pom.xml
+	@echo "    						<goal>flatten</goal>" >> pom.xml
+	@echo "    					</goals>" >> pom.xml
+	@echo "    				</execution>" >> pom.xml
+	@echo "    				<execution>" >> pom.xml
+	@echo "    					<id>flatten.clean</id>" >> pom.xml
+	@echo "    					<phase>clean</phase>" >> pom.xml
+	@echo "    					<goals>" >> pom.xml
+	@echo "    						<goal>clean</goal>" >> pom.xml
+	@echo "    					</goals>" >> pom.xml
+	@echo "    				</execution>" >> pom.xml
+	@echo "    			</executions>" >> pom.xml
+	@echo "    		</plugin>" >> pom.xml
+	@echo "    	</plugins>" >> pom.xml
+	@echo "    </build>" >> pom.xml
 	@echo "</project>" >> pom.xml
+	mkdir -p .mvn
+	echo "-Drevision=0.0.1 -Dsha1= -Dchangelist=-SNAPSHOT" > .mvn/maven.config
