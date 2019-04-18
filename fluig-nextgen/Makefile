@@ -10,7 +10,7 @@ SHELL = /bin/bash
 build:
 	@for f in *; do \
         if [ -f $${f}/Makefile ]; then \
-            cd $$f && make -s build -e LOCAL=true -e VERSION=local && cd ..; \
+            cd $$f && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
         fi \
     done
 
