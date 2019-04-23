@@ -58,11 +58,21 @@ boards: maven-boards docker-boards
 # Rule "build"
 .PHONY: build
 build:
-	@for f in *; do \
-        if [ -f $${f}/Makefile ]; then \
-            cd $$f && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
-        fi \
-    done
+	if [ -f boards-widget/Makefile ]; then \
+	    cd boards-widget && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
+	fi; \
+	if [ -f learning-widget/Makefile ]; then \
+	    cd learning-widget && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
+	fi; \
+	if [ -f boards/Makefile ]; then \
+	    cd boards && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
+	fi; \
+	if [ -f lms/Makefile ]; then \
+	    cd lms && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
+	fi; \
+	if [ -f fluig/Makefile ]; then \
+	    cd fluig && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
+	fi
 
 # Rule "run-db"
 .PHONY: run-db
