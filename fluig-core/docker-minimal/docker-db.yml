@@ -5,13 +5,10 @@ services:
       command: --init-file /data/application/init.sql
       environment:
          - MYSQL_ROOT_PASSWORD=YuCBDOZnqE5vL
-         - volume=./volume
       volumes:
-         - mysql-fluig:/var/lib/mysql
+         - ./mysql:/var/lib/mysql
          - ./init.sql:/data/application/init.sql
       networks:
          - platform
 networks:
    platform:
-volumes:
-   mysql-fluig:
