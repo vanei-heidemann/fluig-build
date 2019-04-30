@@ -7,7 +7,7 @@ services:
       - MYSQL_ROOT_PASSWORD=YuCBDOZnqE5vL
       - volume=./volume
     volumes:
-      - mysql-fluig:/var/lib/mysql
+      - ./mysql-fluig:/var/lib/mysql
       - ./init.sql:/data/application/init.sql
     networks:
       - platform
@@ -20,7 +20,7 @@ services:
       - MYSQL_DATABASE=lms
       - volume=./volume
     volumes:
-      - mysql-lms:/var/lib/mysql
+      - ./mysql-lms:/var/lib/mysql
     networks:
       - platform
   boards-dbserver:
@@ -32,12 +32,8 @@ services:
       - MYSQL_DATABASE=boards
       - volume=./volume
     volumes:
-      - mysql-boards:/var/lib/mysql
+      - ./mysql-boards:/var/lib/mysql
     networks:
       - platform
 networks:
   platform:
-volumes:
-  mysql-fluig:
-  mysql-lms:
-  mysql-boards:

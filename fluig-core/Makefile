@@ -102,7 +102,13 @@ stop-app:
 # Rule "clear-volume"
 .PHONY: clear-volume
 clear-volume:
-	cd docker && docker system prune --volumes -f && sudo rm -rf volume && mkdir volume && chmod 777 volume
+	cd docker && docker system prune -f && \
+	sudo rm -rf volume && \
+	mkdir volume && \
+	chmod 777 volume && \
+	sudo rm -rf mysql-fluig && \
+	sudo rm -rf mysql-lms && \
+	sudo rm -rf mysql-boards
 
 # Rule "run-minimal-db"
 .PHONY: run-minimal-db
