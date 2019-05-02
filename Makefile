@@ -53,6 +53,11 @@ prepare-core:
 	chmod 777 ${CORE_BASE_DIR}/docker-lms/volume ; \
 	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-lms/*.yml
 
+	cp -R fluig-core/docker-replica ${CORE_BASE_DIR}/ ; \
+	mkdir ${CORE_BASE_DIR}/docker-replica/volume ; \
+	chmod 777 ${CORE_BASE_DIR}/docker-replica/volume ; \
+	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-replica/*.yml
+
 	cp -R fluig-core/docker ${CORE_BASE_DIR}/ ; \
 	mkdir ${CORE_BASE_DIR}/docker/volume ; \
 	chmod 777 ${CORE_BASE_DIR}/docker/volume ; \
