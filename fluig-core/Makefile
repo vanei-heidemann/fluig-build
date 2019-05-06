@@ -59,10 +59,10 @@ boards: maven-boards docker-boards
 .PHONY: build
 build:
 	if [ -f boards-widget/Makefile ]; then \
-	    cd boards-widget && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
+	    cd boards-widget && mvn clean install || true && cd ..; \
 	fi; \
 	if [ -f learning-widget/Makefile ]; then \
-	    cd learning-widget && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
+	    cd learning-widget && mvn clean install || true && cd ..; \
 	fi; \
 	if [ -f boards/Makefile ]; then \
 	    cd boards && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
