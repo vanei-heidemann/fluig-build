@@ -27,7 +27,7 @@ maven: maven-fluig maven-lms maven-boards
 # Rule "docker-fluig"
 .PHONY: docker-fluig
 docker-fluig:
-	cd fluig/docker && $(MAKE) build:local && cd ../..
+	cd fluig/docker && $(MAKE) build -e VERSION=local -e LOCAL=1 && cd ../..
 
 # Rule "docker-lms"
 .PHONY: docker-lms
