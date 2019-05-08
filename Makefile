@@ -42,6 +42,7 @@ prepare-core:
 	mkdir ${CORE_BASE_DIR}/docker-minimal/volume ; \
 	cp -R common/mysql/* ${CORE_BASE_DIR}/docker-minimal ; \
 	chmod 777 ${CORE_BASE_DIR}/docker-minimal/volume ; \
+	cp common/docker/Makefile ${CORE_BASE_DIR}/docker-minimal/ ; \
 	cat common/docker/discovery-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/i18n-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/fluig-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
@@ -55,6 +56,7 @@ prepare-core:
 	mkdir ${CORE_BASE_DIR}/docker-boards/volume ; \
 	cp -R common/mysql/* ${CORE_BASE_DIR}/docker-boards ; \
 	chmod 777 ${CORE_BASE_DIR}/docker-boards/volume ; \
+	cp common/docker/Makefile ${CORE_BASE_DIR}/docker-boards/ ; \
 	cat common/docker/discovery-application.yml >> ${CORE_BASE_DIR}/docker-boards/docker-app.yml; \
 	cat common/docker/i18n-application.yml >> ${CORE_BASE_DIR}/docker-boards/docker-app.yml; \
 	cat common/docker/fluig-application.yml >> ${CORE_BASE_DIR}/docker-boards/docker-app.yml; \
@@ -69,17 +71,43 @@ prepare-core:
 	cp -R fluig-core/docker-lms ${CORE_BASE_DIR}/ ; \
 	mkdir ${CORE_BASE_DIR}/docker-lms/volume ; \
 	chmod 777 ${CORE_BASE_DIR}/docker-lms/volume ; \
-	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-lms/*.yml
+	cp -R common/mysql/* ${CORE_BASE_DIR}/docker-lms/ ; \
+	cp common/docker/Makefile ${CORE_BASE_DIR}/docker-lms/ ; \
+	cat common/docker/discovery-application.yml >> ${CORE_BASE_DIR}/docker-lms/docker-app.yml; \
+	cat common/docker/i18n-application.yml >> ${CORE_BASE_DIR}/docker-lms/docker-app.yml; \
+	cat common/docker/fluig-application.yml >> ${CORE_BASE_DIR}/docker-lms/docker-app.yml; \
+	cat common/docker/lms-application.yml >> ${CORE_BASE_DIR}/docker-lms/docker-app.yml; \
+	cat common/docker/networks.yml >> ${CORE_BASE_DIR}/docker-lms/docker-app.yml; \
+	cat common/docker/lms-migration.yml >> ${CORE_BASE_DIR}/docker-lms/docker-migration.yml; \
+	cat common/docker/discovery-migration.yml >> ${CORE_BASE_DIR}/docker-lms/docker-migration.yml; \
+	cat common/docker/i18n-migration.yml >> ${CORE_BASE_DIR}/docker-lms/docker-migration.yml; \
+	cat common/docker/fluig-migration.yml >> ${CORE_BASE_DIR}/docker-lms/docker-migration.yml; \
+	cat common/docker/networks.yml >> ${CORE_BASE_DIR}/docker-lms/docker-migration.yml
 
-	cp -R fluig-core/docker-replica ${CORE_BASE_DIR}/ ; \
-	mkdir ${CORE_BASE_DIR}/docker-replica/volume ; \
-	chmod 777 ${CORE_BASE_DIR}/docker-replica/volume ; \
-	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-replica/*.yml
+#	cp -R fluig-core/docker-replica ${CORE_BASE_DIR}/ ; \
+#	mkdir ${CORE_BASE_DIR}/docker-replica/volume ; \
+#	chmod 777 ${CORE_BASE_DIR}/docker-replica/volume ; \
+#	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-replica/*.yml
 
 	cp -R fluig-core/docker ${CORE_BASE_DIR}/ ; \
 	mkdir ${CORE_BASE_DIR}/docker/volume ; \
 	chmod 777 ${CORE_BASE_DIR}/docker/volume ; \
-	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker/*.yml
+	cp -R common/mysql/* ${CORE_BASE_DIR}/docker/ ; \
+	cp common/docker/Makefile ${CORE_BASE_DIR}/docker/ ; \
+	cat common/docker/discovery-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/i18n-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/comments-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/scheduling-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/tasks-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/fluig-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/lms-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/boards-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/networks.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/lms-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
+	cat common/docker/discovery-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
+	cat common/docker/i18n-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
+	cat common/docker/fluig-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
+	cat common/docker/networks.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml
 
 	cat common/git/Makefile.gitbranch >> ${CORE_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitclean >> ${CORE_BASE_DIR}/Makefile ; \

@@ -1,0 +1,12 @@
+  lms-migration:
+    #image: docker.fluig.com/platform/lms/migration:${learningVersion}
+    image: platform/lms/migration:local
+    environment:
+      # database configuration
+      - LMS_DATABASE_SERVER=lms-dbserver
+      - LMS_DATABASE_PORT=3306
+      - LMS_DATABASE_USER=fluig
+      - LMS_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - LMS_DATABASE_NAME=lms
+    networks:
+      - platform

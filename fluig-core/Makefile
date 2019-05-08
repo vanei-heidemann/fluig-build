@@ -74,67 +74,6 @@ build:
 	    cd fluig && make -s build -e LOCAL=true -e VERSION=local || true && cd ..; \
 	fi
 
-# Rule "run-db"
-.PHONY: run-db
-run-db:
-	cd docker && docker-compose -f docker-db.yml up
-
-# Rule "stop-db"
-.PHONY: stop-db
-stop-db:
-	cd docker && docker-compose -f docker-db.yml down
-
-# Rule "run-migration"
-.PHONY: run-migration
-run-migration:
-	cd docker && docker-compose -f docker-migration.yml up
-
-# Rule "run-app"
-.PHONY: run-app
-run-app:
-	cd docker && docker-compose -f docker-app.yml up
-
-# Rule "stop-app"
-.PHONY: stop-app
-stop-app:
-	cd docker && docker-compose -f docker-app.yml down
-
-# Rule "clear-volume"
-.PHONY: clear-volume
-clear-volume:
-	cd docker && docker system prune -f && \
-	sudo rm -rf volume && \
-	mkdir volume && \
-	chmod 777 volume && \
-	sudo rm -rf mysql-fluig && \
-	sudo rm -rf mysql-lms && \
-	sudo rm -rf mysql-boards
-
-# Rule "run-minimal-db"
-.PHONY: run-minimal-db
-run-minimal-db:
-	cd docker-minimal && docker-compose -f docker-db.yml up
-
-# Rule "stop-minimal-db"
-.PHONY: stop-minimal-db
-stop-minimal-db:
-	cd docker-minimal && docker-compose -f docker-db.yml down
-
-# Rule "run-minimal-app"
-.PHONY: run-minimal-app
-run-minimal-app:
-	cd docker-minimal && docker-compose -f docker-app.yml up
-
-# Rule "stop-minimal-app"
-.PHONY: stop-minimal-app
-stop-minimal-app:
-	cd docker-minimal && docker-compose -f docker-app.yml down
-
-# Rule "clear-minimal-volume"
-.PHONY: clear-minimal-volume
-clear-minimal-volume:
-	cd docker-minimal && docker system prune --volumes -f && sudo rm -rf volume && mkdir volume && chmod 777 volume
-
 # Rule "gitclone"
 .PHONY: gitclone
 gitclone:

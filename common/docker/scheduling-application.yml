@@ -1,0 +1,29 @@
+  scheduling-application:
+    #image: docker.fluig.com/platform/fluig-scheduling:${schedulingVersion}
+    image: platform/fluig-scheduling:local
+    environment:
+      - FLUIG_URL=http://fluig-application:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      - FLUIG_SERVICE_BASE_URL=http://scheduling-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
+      # database configuration
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=fluig123
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_scheduling?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - FLUIG_DATABASE_USER_RO=fluig
+      - FLUIG_DATABASE_PASSWORD_RO=fluig123
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver-slave:3306/fluig_scheduling?useSSL=false&useLegacyDatetimeCode=false
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+    networks:
+      - platform
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
