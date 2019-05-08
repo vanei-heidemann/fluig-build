@@ -42,7 +42,14 @@ prepare-core:
 	mkdir ${CORE_BASE_DIR}/docker-minimal/volume ; \
 	cp -R common/mysql/* ${CORE_BASE_DIR}/docker-minimal ; \
 	chmod 777 ${CORE_BASE_DIR}/docker-minimal/volume ; \
-	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-minimal/*.yml
+	cat common/docker/discovery-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
+	cat common/docker/i18n-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
+	cat common/docker/fluig-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
+	cat common/docker/networks.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
+	cat common/docker/discovery-migration.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-migration.yml; \
+	cat common/docker/i18n-migration.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-migration.yml; \
+	cat common/docker/fluig-migration.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-migration.yml; \
+	cat common/docker/networks.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-migration.yml
 
 	cp -R fluig-core/docker-boards ${CORE_BASE_DIR}/ ; \
 	mkdir ${CORE_BASE_DIR}/docker-boards/volume ; \
