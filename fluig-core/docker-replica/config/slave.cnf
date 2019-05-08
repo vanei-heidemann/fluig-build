@@ -9,3 +9,5 @@ read-only=1
 slave-skip-errors = 1062
 skip-host-cache
 skip-name-resolve
+general_log=1
+general_log_file=/var/lib/mysql/slave.log
