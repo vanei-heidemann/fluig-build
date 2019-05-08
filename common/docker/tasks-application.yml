@@ -1,0 +1,35 @@
+  tasks-application:
+    #image: docker.fluig.com/platform/bpm-tasks:${tasksVersion}
+    image: platform/bpm-tasks:local
+    ports:
+      - 8790:8790
+    environment:
+      # database configuration
+      - FLUIG_DATABASE_USER=fluig
+      - FLUIG_DATABASE_PASSWORD=fluig123
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_tasks?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - FLUIG_DATABASE_USER_RO=fluig
+      - FLUIG_DATABASE_PASSWORD_RO=fluig123
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver-slave:3306/fluig_tasks?useSSL=false&useLegacyDatetimeCode=false
+      # platform configuration
+      - FLUIG_ENDPOINT=fluig-application:8080
+      - FLUIG_URL=http://fluig-application:8080
+      - FLUIG_SERVICE_BASE_URL=http://fluig-application:8080
+      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
+      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
+      #- SKIP_DISCOVERY_REGISTRATION=true
+      #- SKIP_I18N_REGISTRATION=true
+      # Autenticacao
+      - fluig.resource.jwk-enabled=true
+    volumes:
+      - ./volume:/opt/volume
+    networks:
+      - platform
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
