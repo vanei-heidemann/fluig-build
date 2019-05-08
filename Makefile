@@ -40,11 +40,13 @@ prepare-core:
 
 	cp -R fluig-core/docker-minimal ${CORE_BASE_DIR}/ ; \
 	mkdir ${CORE_BASE_DIR}/docker-minimal/volume ; \
+	cp -R common/mysql/* ${CORE_BASE_DIR}/docker-minimal ; \
 	chmod 777 ${CORE_BASE_DIR}/docker-minimal/volume ; \
 	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-minimal/*.yml
 
 	cp -R fluig-core/docker-boards ${CORE_BASE_DIR}/ ; \
 	mkdir ${CORE_BASE_DIR}/docker-boards/volume ; \
+	cp -R common/mysql/* ${CORE_BASE_DIR}/docker-boards ; \
 	chmod 777 ${CORE_BASE_DIR}/docker-boards/volume ; \
 	sed -i -- 's/IP_ADDR/${IP_ADDR}/g' ${CORE_BASE_DIR}/docker-boards/*.yml
 

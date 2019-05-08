@@ -12,12 +12,12 @@ services:
       #- SKIP_I18N_REGISTRATION=true
       # database configuration
       - FLUIG_DATABASE_USER=fluig
-      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_PASSWORD=fluig123
       - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_discovery?useSSL=false&useLegacyDatetimeCode=false
       - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
       - FLUIG_DATABASE_USER_RO=fluig
-      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
-      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_discovery?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_PASSWORD_RO=fluig123
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver-slave:3306/fluig_discovery?useSSL=false&useLegacyDatetimeCode=false
       # Autenticacao
       - fluig.resource.jwk-enabled=true
     networks:
@@ -41,12 +41,12 @@ services:
       #- SKIP_I18N_REGISTRATION=true
       # database configuration
       - FLUIG_DATABASE_USER=fluig
-      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_PASSWORD=fluig123
       - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_i18n?useSSL=false&useLegacyDatetimeCode=false
       - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
       - FLUIG_DATABASE_USER_RO=fluig
-      - FLUIG_DATABASE_PASSWORD_RO=OLyVu1gIwWmEr
-      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/fluig_i18n?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_PASSWORD_RO=fluig123
+      - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver-slave:3306/fluig_i18n?useSSL=false&useLegacyDatetimeCode=false
       # Autenticacao
       - fluig.resource.jwk-enabled=true
     networks:
@@ -68,7 +68,7 @@ services:
       - FLUIG_DATABASE_SERVER=fluig-dbserver
       - FLUIG_DATABASE_PORT=3306
       - FLUIG_DATABASE_USER=fluig
-      - FLUIG_DATABASE_PASSWORD=OLyVu1gIwWmEr
+      - FLUIG_DATABASE_PASSWORD=fluig123
       - FLUIG_DATABASE_NAME=fluig
       # platform configuration
       - FLUIG_JMS_PASSWORD=platform

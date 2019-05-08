@@ -30,6 +30,20 @@ run-app:
 stop-app:
 	docker-compose -f docker-app.yml down
 
+# Rule "start"
+.PHONY: start
+start:
+	make run-db & \
+	sleep 20; \
+	make run-migration; \
+	make run-app
+
+# Rule "stop"
+.PHONY: stop
+stop:
+	make stop-app; \
+	make stop-db
+
 # Rule "clear-volume"
 .PHONY: clear-volume
 clear-volume:
@@ -37,4 +51,4 @@ clear-volume:
 	    sudo rm -rf volume && \
 	    mkdir volume && \
 	    chmod 777 volume && \
-	    sudo rm -rf mysql
+	    sudo rm -rf data
