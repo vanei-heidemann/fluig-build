@@ -98,6 +98,7 @@ prepare-core:
 	cat common/docker/i18n-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/comments-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/scheduling-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/storage-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/tasks-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/fluig-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/lms-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
@@ -106,6 +107,7 @@ prepare-core:
 	cat common/docker/lms-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
 	cat common/docker/discovery-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
 	cat common/docker/i18n-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
+	cat common/docker/storage-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
 	cat common/docker/scheduling-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
 	cat common/docker/fluig-migration.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml; \
 	cat common/docker/networks.yml >> ${CORE_BASE_DIR}/docker/docker-migration.yml
