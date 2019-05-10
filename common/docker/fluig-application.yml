@@ -10,6 +10,7 @@
       - FLUIG_DATABASE_USER=fluig
       - FLUIG_DATABASE_PASSWORD=fluig123
       - FLUIG_DATABASE_NAME=fluig
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig?useSSL=false&useLegacyDatetimeCode=false
       # platform configuration
       - FLUIG_JMS_PASSWORD=platform
       - FLUIG_HOST_ADDRESS_PUBLIC=fluig-application
