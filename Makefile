@@ -51,7 +51,7 @@ prepare-core:
 	cp common/docker/Makefile ${CORE_BASE_DIR}/docker-minimal/ ; \
 	cp common/public.env ${CORE_BASE_DIR}/docker-minimal/
 	cat common/docker/accounts-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
-	cat common/docker/maestro-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	cat common/docker/maestro-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/manager-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/discovery-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/i18n-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
