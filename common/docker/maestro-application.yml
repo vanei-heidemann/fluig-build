@@ -1,0 +1,30 @@
+  maestro-application:
+    image: platform/maestro:local
+    #ports:
+    #  - 9888:9888
+    env_file:
+      - ./public.env
+      - ./private.env
+    environment:
+      - MAESTRO_DATABASE_USER=fluig
+      - MAESTRO_DATABASE_PASSWORD=fluig123
+      - MAESTRO_DATABASE_SERVER=fluig-dbserver
+      - MAESTRO_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/maestro?useSSL=false&useLegacyDatetimeCode=false
+      - MAESTRO_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/maestro?useSSL=false&useLegacyDatetimeCode=false
+      - MAESTRO_DATABASE_USER_RO=fluig
+      - MAESTRO_DATABASE_PASSWORD_RO=fluig123
+      - MAESTRO_DATABASE_PORT=3306
+      - MAESTRO_DATABASE_NAME=maestro
+      - MAESTRO_ENDPOINT=maestro-application:8080
+      - MAESTRO_DATABASE_DRIVER=com.mysql.jdbc.Driver
+      - MAESTRO_HOST_ADDRESS_PUBLIC=maestro-application
+      - FLUIG_INTERNAL_SERVER_URL=http://fluig-application:8080
+    networks:
+      - platform
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536

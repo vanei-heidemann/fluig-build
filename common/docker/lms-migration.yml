@@ -1,6 +1,10 @@
   lms-migration:
     #image: docker.fluig.com/platform/lms/migration:${learningVersion}
-    image: platform/lms/migration:local
+    #image: platform/lms/migration:local
+    image: docker.fluig.com/platform/lms/migration:0c0ea6a
+    env_file:
+      - ./public.env
+      - ./private.env
     environment:
       # database configuration
       - LMS_DATABASE_SERVER=fluig-dbserver

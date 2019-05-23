@@ -21,9 +21,11 @@ echo "* Create replication user"
 
 mysql --host $MYSQL_SLAVE_HOSTNAME -uroot -p$MYSQL_SLAVE_PASSWORD -AN -e 'STOP SLAVE;';
 mysql --host $MYSQL_SLAVE_HOSTNAME -uroot -p$MYSQL_MASTER_PASSWORD -AN -e 'RESET SLAVE ALL;';
+mysql --host $MYSQL_SLAVE_HOSTNAME -uroot -p$MYSQL_MASTER_PASSWORD -AN -e "GRANT SELECT on *.* to 'fluig'@'%' identified by 'fluig123';"
 
 mysql --host $MYSQL_MASTER_HOSTNAME -uroot -p$MYSQL_MASTER_PASSWORD -AN -e "CREATE USER '$MYSQL_REPLICATION_USER'@'%';"
 mysql --host $MYSQL_MASTER_HOSTNAME -uroot -p$MYSQL_MASTER_PASSWORD -AN -e "GRANT REPLICATION SLAVE ON *.* TO '$MYSQL_REPLICATION_USER'@'%' IDENTIFIED BY '$MYSQL_REPLICATION_PASSWORD';"
+mysql --host $MYSQL_MASTER_HOSTNAME -uroot -p$MYSQL_MASTER_PASSWORD -AN -e "GRANT ALL on *.* to 'fluig'@'%' identified by 'fluig123';"
 mysql --host $MYSQL_MASTER_HOSTNAME -uroot -p$MYSQL_MASTER_PASSWORD -AN -e 'flush privileges;'
 
 

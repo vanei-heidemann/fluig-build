@@ -1,8 +1,9 @@
   scheduling-migration:
     image: platform/fluig-scheduling-dbmigration:local
+    env_file:
+      - ./public.env
+      - ./private.env
     environment:
-      - FLUIG_DATABASE_USER=fluig
-      - FLUIG_DATABASE_PASSWORD=fluig123
       - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_scheduling?useSSL=false&useLegacyDatetimeCode=false
       - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
     networks:

@@ -2,7 +2,9 @@ version: "3"
 services:
   nginx:
     image: docker.fluig.com/platform/nginx:latest
-    # map local port 8080 to 80 into the nginx container
+    env_file:
+      - ./public.env
+      - ./private.env
     ports:
       - 8080:80
     networks:
@@ -11,5 +13,7 @@ services:
       - i18n-application
       - discovery-application
       - fluig-application
+      - maestro-application
+      - accounts-application
     volumes:
       - ./nginx:/etc/nginx/sites/http/

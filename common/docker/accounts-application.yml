@@ -1,0 +1,28 @@
+  accounts-application:
+    #image: docker.fluig.com/platform/accounts:${accountsVersion}
+    image: platform/accounts:local
+    env_file:
+      - ./public.env
+      - ./private.env
+    #ports:
+    #  - 8788:8788
+    environment:
+      # Accounts Config
+      - ACCOUNTS_DATABASE_USER=fluig
+      - ACCOUNTS_DATABASE_PASSWORD=fluig123
+      - ACCOUNTS_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/accounts?useSSL=false
+      - ACCOUNTS_DATABASE_USER_RO=fluig
+      - ACCOUNTS_DATABASE_PASSWORD_RO=fluig123
+      - ACCOUNTS_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/accounts?useSSL=false
+      - ACCOUNTS_LOGIN_FORM=http://172.20.0.1:8080/accounts/ui/login
+      - ACCOUNTS_ENDPOINT=accounts-application:8080
+      - ACCOUNTS_HOST_ADDRESS_PUBLIC=accounts-application
+    networks:
+      - platform
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536

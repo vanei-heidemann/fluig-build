@@ -3,6 +3,9 @@ services:
    fluig-dbserver:
       container_name: fluig-dbserver
       image: docker.fluig.com/fluig/mysql:latest
+      env_file:
+         - ./public.env
+         - ./private.env
       environment:
          - MYSQL_ROOT_PASSWORD=root123
       volumes:
@@ -13,6 +16,9 @@ services:
    fluig-dbserver-slave:
       container_name: fluig-dbserver-slave
       image: docker.fluig.com/fluig/mysql:latest
+      env_file:
+         - ./public.env
+         - ./private.env
       depends_on:
          - fluig-dbserver
       environment:
@@ -24,6 +30,9 @@ services:
          - platform
    fluig-dbserver-configure:
       image: docker.fluig.com/fluig/mysql:latest
+      env_file:
+         - ./public.env
+         - ./private.env
       depends_on:
          - fluig-dbserver
          - fluig-dbserver-slave

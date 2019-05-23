@@ -1,8 +1,12 @@
   lms-application:
     #image: docker.fluig.com/platform/lms:${learningVersion}
-    image: platform/lms:local
+    image: docker.fluig.com/platform/lms:0c0ea6a
+    #image: platform/lms:local
     #ports:
     #   - 9797:9797
+    env_file:
+      - ./public.env
+      - ./private.env
     environment:
       # database configuration
       - LMS_DATABASE_SERVER=fluig-dbserver
@@ -13,13 +17,8 @@
       # lms configuration
       - LMS_JMS_PASSWORD=platform
       - LMS_ENDPOINT=lms-application:8080
-      - FLUIG_ENDPOINT=fluig-application:8080
-      - FLUIG_URL=http://fluig-application:8080
-      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - LMS_HOST_ADDRESS_PUBLIC=lms-application
       - CLOUD_REPOSITORY=false
-    #command:
-    #   - --debug 9797
     restart: always
     networks:
       - platform
@@ -32,20 +31,20 @@
         hard: 65536
     volumes:
       - ./volume:/opt/volume
-    depends_on:
-      #- lms-migration
-      - learning-volume-update
-  learning-volume-update:
-    #image: docker.fluig.com/platform/lms/volume-update:${learningVersion}
-    image: platform/lms/volume-update:local
-    environment:
-      # database configuration
-      - LMS_DATABASE_SERVER=fluig-dbserver
-      - LMS_DATABASE_PORT=3306
-      - LMS_DATABASE_USER=fluig
-      - LMS_DATABASE_PASSWORD=fluig123
-      - LMS_DATABASE_NAME=lms
-    networks:
-      - platform
-    volumes:
-      - ./volume:/opt/volume
+#    depends_on:
+#      #- lms-migration
+#      - learning-volume-update
+#  learning-volume-update:
+#    #image: docker.fluig.com/platform/lms/volume-update:${learningVersion}
+#    image: platform/lms/volume-update:local
+#    environment:
+#      # database configuration
+#      - LMS_DATABASE_SERVER=fluig-dbserver
+#      - LMS_DATABASE_PORT=3306
+#      - LMS_DATABASE_USER=fluig
+#      - LMS_DATABASE_PASSWORD=fluig123
+#      - LMS_DATABASE_NAME=lms
+#    networks:
+#      - platform
+#    volumes:
+#      - ./volume:/opt/volume

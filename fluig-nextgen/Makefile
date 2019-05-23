@@ -87,7 +87,8 @@ gitclone-bpm:
 gitclone-fws:
 	git clone ssh://git@git.fluig.com:7999/fbm/accounts.git ; \
 	git clone ssh://git@git.fluig.com:7999/fbm/business-manager.git ; \
-	git clone ssh://git@git.fluig.com:7999/fbm/locksmith.git
+	git clone ssh://git@git.fluig.com:7999/fbm/locksmith.git ; \
+	git clone ssh://git@git.fluig.com:7999/fms/maestro.git
 
 # Rule "gitclone-all"
 .PHONY: gitclone-all

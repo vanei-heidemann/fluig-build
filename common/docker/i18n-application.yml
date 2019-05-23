@@ -1,23 +1,17 @@
   i18n-application:
     #image: docker.fluig.com/platform/fluig-i18n:${i18nVersion}
     image: platform/fluig-i18n:local
+    env_file:
+      - ./public.env
+      - ./private.env
     environment:
-      - FLUIG_URL=http://fluig-application:8080
-      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
-      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
       - FLUIG_SERVICE_BASE_URL=http://i18n-application:8080
-      #- SKIP_DISCOVERY_REGISTRATION=true
-      #- SKIP_I18N_REGISTRATION=true
       # database configuration
-      - FLUIG_DATABASE_USER=fluig
-      - FLUIG_DATABASE_PASSWORD=fluig123
       - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig_i18n?useSSL=false&useLegacyDatetimeCode=false
       - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
-      - FLUIG_DATABASE_USER_RO=fluig
-      - FLUIG_DATABASE_PASSWORD_RO=fluig123
       - FLUIG_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver-slave:3306/fluig_i18n?useSSL=false&useLegacyDatetimeCode=false
       # Autenticacao
-      - fluig.resource.jwk-enabled=true
+      - accounts.resource.jwk-enabled=true
     networks:
       - platform
     ulimits:

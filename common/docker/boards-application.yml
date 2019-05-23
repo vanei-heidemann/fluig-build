@@ -1,36 +1,31 @@
   boards-application:
     #image: docker.fluig.com/platform/boards:${boardsVersion}
     image: platform/boards:local
-    ports:
-      - 8788:8788
+    env_file:
+      - ./public.env
+      - ./private.env
+    #ports:
+    #  - 8788:8788
     environment:
-      - API_KEY_ACCUSOFT=Ku_LuVEnykMXc-Y244w0pwv-FNzFKIrHhsNr1AzNKNcCCozsWGdf-RPwNmh9TonE
       # database configuration
       - BOARDS_DATABASE_USER=fluig
       - BOARDS_DATABASE_PASSWORD=fluig123
       - BOARDS_DATABASE_SERVER=fluig-dbserver
       - BOARDS_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/boards?useSSL=false
       - BOARDS_DATABASE_DRIVER=com.mysql.jdbc.Driver
-      - BOARDS_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver-slave:3306/boards?useSSL=false
+      - BOARDS_DATABASE_URL_RO=jdbc:mysql://fluig-dbserver:3306/boards?useSSL=false
       - BOARDS_DATABASE_USER_RO=fluig
       - BOARDS_DATABASE_PASSWORD_RO=fluig123
       - BOARDS_DATABASE_PORT=3306
       - BOARDS_DATABASE_NAME=boards
       # boards configuration
       - BOARDS_JMS_PASSWORD=platform
-      - BOARDS_ENDPOINT=boards-application:8080
-      - FLUIG_ENDPOINT=fluig-application:8080
-      - FLUIG_URL=http://fluig-application:8080
       - BOARDS_HOST_ADDRESS_PUBLIC=boards-application
       - FLUIG_SERVICE_BASE_URL=http://fluig-application:8080
-      - FLUIG_HOST_URL_ADDRESS=http://fluig.local:8080
-      - FLUIG_DISCOVERY_URL=http://discovery-application:8080
-      - FLUIG_STORAGE_URL=http://storage-application:8080
-      - FLUIG_TASKS_URL=http://tasks-application:8080
       #- SKIP_DISCOVERY_REGISTRATION=true
       #- SKIP_I18N_REGISTRATION=true
       # Autenticacao
-      - fluig.resource.jwk-enabled=true
+      - accounts.resource.jwk-enabled=true
       # Storage
       - FLUIG_STORAGE_FILE_SIZE=15MB
       - FLUIG_STORAGE_REQUEST_SIZE=15MB

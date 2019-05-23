@@ -1,0 +1,9 @@
+  mail-server:
+    image: mailhog/mailhog:latest
+    env_file:
+      - ./public.env
+      - ./private.env
+    ports:
+      - 38025:8025
+    networks:
+      - platform
