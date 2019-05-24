@@ -29,6 +29,7 @@ Após preparado o ambiente, é recomendado que entre na pasta criada (**cd ../fl
     + **make pom**<br>
     + **make build**<br>
     Para executar o Fluig Core, os seguintes comandos devem ser executados:
+    + **cd docker**<br>
     + **make run-db**<br>
     + **make run-migration**<br>
     + **make run-app**<br>
