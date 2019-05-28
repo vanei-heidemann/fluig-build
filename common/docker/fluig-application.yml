@@ -17,10 +17,15 @@
       # platform configuration
       - FLUIG_JMS_PASSWORD=platform
       - FLUIG_HOST_ADDRESS_PUBLIC=fluig-application
-    command:
-      - --debug
+#    command:
+#      - --debug
     networks:
       - platform
+    depends_on:
+      - i18n-application
+      - discovery-application
+      - maestro-application
+      - accounts-application
     ulimits:
       memlock:
         soft: -1
