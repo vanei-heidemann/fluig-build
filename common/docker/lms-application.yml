@@ -1,6 +1,6 @@
   lms-application:
     #image: docker.fluig.com/platform/lms:${learningVersion}
-    image: docker.fluig.com/platform/lms:0c0ea6a
+    image: docker.fluig.com/platform/lms:2e5a490
     #image: platform/lms:local
     #ports:
     #   - 9797:9797

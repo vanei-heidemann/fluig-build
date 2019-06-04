@@ -1,6 +1,6 @@
   boards-application:
-    #image: docker.fluig.com/platform/boards:${boardsVersion}
-    image: platform/boards:local
+    image: docker.fluig.com/platform/boards:ffd3758
+    #image: platform/boards:local
     env_file:
       - ./public.env
       - ./private.env

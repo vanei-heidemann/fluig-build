@@ -1,6 +1,6 @@
   manager-application:
-    #image: docker.fluig.com/platform/manager:${managerVersion}
-    image: platform/manager:local
+    image: docker.fluig.com/platform/manager:06e6340
+    #image: platform/manager:local
     env_file:
       - ./public.env
       - ./private.env
