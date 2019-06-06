@@ -6,7 +6,7 @@ gitpull:
 		if [ -d $${f}/.git ]; then \
 			echo $$f; \
 			echo "==================================="; \
-			cd $$f && git pull && cd ..; \
+			cd $$f && git pull || true && cd ..; \
 			echo " "; \
 		fi \
 	done
