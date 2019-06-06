@@ -15,7 +15,7 @@ services:
       - maestro-application
       - accounts-application
       #- comments-application
-      - storage-application
+      #- storage-application
       #- scheduling-application
       - fluig-application
       - lms-application
