@@ -1,5 +1,5 @@
   boards-application:
-    image: docker.fluig.com/platform/boards:1198e05
+    image: docker.fluig.com/platform/boards:288d35a
     #image: platform/boards:local
     env_file:
       - ./public.env

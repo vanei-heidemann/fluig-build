@@ -52,7 +52,7 @@ prepare-core:
 	cp common/public.env ${CORE_BASE_DIR}/docker-minimal/
 	cat common/docker/accounts-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/maestro-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
-	cat common/docker/manager-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
+	#cat common/docker/manager-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/discovery-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/i18n-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/fluig-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
@@ -69,14 +69,14 @@ prepare-core:
 	#cat common/docker/static-server.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/accounts-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/maestro-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
-	cat common/docker/manager-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	#cat common/docker/manager-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/discovery-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/i18n-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/fluig-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/lms-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/boards-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	#cat common/docker/scheduling-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
-	cat common/docker/storage-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
+	#cat common/docker/storage-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	#cat common/docker/comments-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	#cat common/docker/tasks-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/networks.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
