@@ -1,6 +1,6 @@
   accounts-application:
-    #image: docker.fluig.com/platform/accounts:${accountsVersion}
-    image: platform/accounts:local
+    image: docker.fluig.com/platform/accounts:${accountsVersion}
+    #image: platform/accounts:local
     env_file:
       - ./public.env
       - ./private.env

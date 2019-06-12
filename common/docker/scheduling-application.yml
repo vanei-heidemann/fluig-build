@@ -1,6 +1,6 @@
   scheduling-application:
-    #image: docker.fluig.com/platform/fluig-scheduling:${schedulingVersion}
-    image: platform/fluig-scheduling:local
+    image: docker.fluig.com/platform/fluig-scheduling:${schedulingVersion}
+    #image: platform/fluig-scheduling:local
     env_file:
       - ./public.env
       - ./private.env

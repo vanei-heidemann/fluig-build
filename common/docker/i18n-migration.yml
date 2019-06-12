@@ -1,5 +1,6 @@
   i18n-migration:
-    image: platform/fluig-i18n-dbmigration:local
+    image: docker.fluig.com/platform/fluig-i18n-dbmigration:${i18nVersion}
+    #image: platform/fluig-i18n-dbmigration:local
     env_file:
       - ./public.env
       - ./private.env

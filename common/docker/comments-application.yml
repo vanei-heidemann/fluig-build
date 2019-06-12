@@ -1,6 +1,6 @@
   comments-application:
-    #image: docker.fluig.com/platform/fluig-comments:${commentsVersion}
-    image: platform/fluig-comments:local
+    image: docker.fluig.com/platform/fluig-comments:${commentsVersion}
+    #image: platform/fluig-comments:local
     env_file:
       - ./public.env
       - ./private.env

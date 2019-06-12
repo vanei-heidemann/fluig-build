@@ -8,6 +8,7 @@ SHELL = /bin/bash
 # Rule "update-versions"
 .PHONY: update-versions
 update-versions:
+	rm -f .env
 	mvn clean -f pom.xml
 
 # Rule "run-db"

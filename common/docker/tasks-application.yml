@@ -1,6 +1,6 @@
   tasks-application:
-    #image: docker.fluig.com/platform/bpm-tasks:${tasksVersion}
-    image: platform/bpm-tasks:local
+    image: docker.fluig.com/platform/bpm-tasks:${tasksVersion}
+    #image: platform/bpm-tasks:local
     ports:
       - 8790:8790
     env_file:

@@ -1,6 +1,6 @@
   discovery-application:
-    #image: docker.fluig.com/platform/fluig-discovery:${discoveryVersion}
-    image: platform/fluig-discovery:local
+    image: docker.fluig.com/platform/fluig-discovery:${discoveryVersion}
+    #image: platform/fluig-discovery:local
     env_file:
       - ./public.env
       - ./private.env

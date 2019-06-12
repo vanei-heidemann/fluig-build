@@ -1,5 +1,6 @@
   scheduling-migration:
-    image: platform/fluig-scheduling-dbmigration:local
+    #image: platform/fluig-scheduling-dbmigration:local
+    image: docker.fluig.com/platform/fluig-scheduling-dbmigration:${schedulingVersion}
     env_file:
       - ./public.env
       - ./private.env

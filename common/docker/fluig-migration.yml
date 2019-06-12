@@ -1,5 +1,6 @@
   fluig-migration:
-    image: platform/fluig-core-dbmigration:local
+    image: docker.fluig.com/platform/fluig-dbmigration:${fluigVersion}
+    #image: platform/fluig-core-dbmigration:local
     env_file:
       - ./public.env
       - ./private.env

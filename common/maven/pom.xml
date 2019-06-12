@@ -42,6 +42,15 @@
                             </labels>
                         </image>
                         <image>
+                            <name>platform/fluig-scheduling</name>
+                            <propertyName>schedulingVersion</propertyName>
+<!--
+                            <labels>
+                                <com.fluig.branch>staging</com.fluig.branch>
+                            </labels>
+-->
+                        </image>
+                        <image>
                             <name>platform/bpm-tasks</name>
                             <propertyName>tasksVersion</propertyName>
                             <labels>
@@ -77,6 +86,31 @@
                             <labels>
                                 <com.fluig.branch>staging</com.fluig.branch>
                             </labels>
+                        </image>
+                        <image>
+                            <name>platform/boards</name>
+                            <propertyName>boardsVersion</propertyName>
+                            <labels>
+                                <com.fluig.branch>staging</com.fluig.branch>
+                            </labels>
+                        </image>
+                        <image>
+                            <name>platform/fluig-comments</name>
+                            <propertyName>commentsVersion</propertyName>
+<!--
+                            <labels>
+                                <com.fluig.branch>staging</com.fluig.branch>
+                            </labels>
+-->
+                        </image>
+                        <image>
+                            <name>platform/lms</name>
+                            <propertyName>learningVersion</propertyName>
+<!--
+                            <labels>
+                                <com.fluig.branch>develop</com.fluig.branch>
+                            </labels>
+-->
                         </image>
                     </images>
                 </configuration>

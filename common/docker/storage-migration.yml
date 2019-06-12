@@ -1,5 +1,6 @@
   storage-migration:
-    image: platform/fluig-storage-dbmigration:local
+    image: docker.fluig.com/platform/fluig-storage-dbmigration:${storageVersion}
+    #image: platform/fluig-storage-dbmigration:local
     env_file:
       - ./public.env
       - ./private.env

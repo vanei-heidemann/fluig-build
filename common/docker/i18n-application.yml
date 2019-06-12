@@ -1,6 +1,6 @@
   i18n-application:
-    #image: docker.fluig.com/platform/fluig-i18n:${i18nVersion}
-    image: platform/fluig-i18n:local
+    image: docker.fluig.com/platform/fluig-i18n:${i18nVersion}
+    #image: platform/fluig-i18n:local
     env_file:
       - ./public.env
       - ./private.env

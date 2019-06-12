@@ -1,6 +1,6 @@
   fluig-application:
-    #image: docker.fluig.com/platform/fluig:${fluigVersion}
-    image: platform/fluig:local
+    image: docker.fluig.com/platform/fluig:${fluigVersion}
+    #image: platform/fluig:local
     ports:
       - 8787:8787
     env_file:

@@ -1,5 +1,6 @@
   discovery-migration:
-    image: platform/fluig-discovery-dbmigration:local
+    image: docker.fluig.com/platform/fluig-discovery-dbmigration:${discoveryVersion}
+    #image: platform/fluig-discovery-dbmigration:local
     env_file:
       - ./public.env
       - ./private.env

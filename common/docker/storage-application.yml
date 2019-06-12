@@ -1,6 +1,6 @@
   storage-application:
-    #image: docker.fluig.com/platform/fluig-storage:${storageVersion}
-    image: platform/fluig-storage:local
+    image: docker.fluig.com/platform/fluig-storage:${storageVersion}
+    #image: platform/fluig-storage:local
     env_file:
       - ./public.env
       - ./private.env

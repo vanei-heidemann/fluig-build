@@ -1,7 +1,6 @@
   lms-migration:
-    #image: docker.fluig.com/platform/lms/migration:${learningVersion}
+    image: docker.fluig.com/platform/lms/migration:${learningVersion}
     #image: platform/lms/migration:local
-    image: docker.fluig.com/platform/lms/migration:d929c76
     env_file:
       - ./public.env
       - ./private.env
