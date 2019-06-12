@@ -5,6 +5,11 @@
 
 SHELL = /bin/bash
 
+# Rule "update-versions"
+.PHONY: update-versions
+update-versions:
+	mvn clean -f pom.xml
+
 # Rule "run-db"
 .PHONY: run-db
 run-db:

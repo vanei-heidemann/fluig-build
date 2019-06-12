@@ -50,6 +50,7 @@ prepare-core:
 	cp -R common/mysql/* ${CORE_BASE_DIR}/docker-minimal ; \
 	cp common/docker/Makefile ${CORE_BASE_DIR}/docker-minimal/ ; \
 	cp common/public.env ${CORE_BASE_DIR}/docker-minimal/
+	cp common/maven/pom.xml ${CORE_BASE_DIR}/docker-minimal/
 	cat common/docker/accounts-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	cat common/docker/maestro-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
 	#cat common/docker/manager-application.yml >> ${CORE_BASE_DIR}/docker-minimal/docker-app.yml; \
@@ -66,6 +67,7 @@ prepare-core:
 	cp -R common/mysql/* ${CORE_BASE_DIR}/docker/ ; \
 	cp common/docker/Makefile ${CORE_BASE_DIR}/docker/ ; \
 	cp common/public.env ${CORE_BASE_DIR}/docker/ ; \
+	cp common/maven/pom.xml ${CORE_BASE_DIR}/docker/
 	#cat common/docker/static-server.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/accounts-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
 	cat common/docker/maestro-application.yml >> ${CORE_BASE_DIR}/docker/docker-app.yml; \
