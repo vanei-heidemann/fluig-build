@@ -1,5 +1,5 @@
   manager-application:
-    image: docker.fluig.com/platform/manager:bc9b158
+    image: docker.fluig.com/platform/manager:5b53ecd
     #image: platform/manager:local
     env_file:
       - ./public.env

@@ -1,6 +1,6 @@
   maestro-application:
     #image: platform/maestro:local
-    image: docker.fluig.com/platform/maestro:4168ac2
+    image: docker.fluig.com/platform/maestro:1b85359
     #ports:
     #  - 9888:9888
     env_file:
