@@ -1,7 +1,10 @@
-#  fluig-migration:
-#    image: platform/fluig-core-dbmigration:local
-#    environment:
-#      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig?useSSL=false&useLegacyDatetimeCode=false
-#      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
-#    networks:
-#      - platform
+  fluig-migration:
+    image: platform/fluig-core-dbmigration:local
+    env_file:
+      - ./public.env
+      - ./private.env
+    environment:
+      - FLUIG_DATABASE_URL=jdbc:mysql://fluig-dbserver:3306/fluig?useSSL=false&useLegacyDatetimeCode=false
+      - FLUIG_DATABASE_DRIVER=com.mysql.jdbc.Driver
+    networks:
+      - platform
