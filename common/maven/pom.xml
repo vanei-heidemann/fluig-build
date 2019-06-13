@@ -74,11 +74,9 @@
                         <image>
                             <name>platform/maestro</name>
                             <propertyName>maestroVersion</propertyName>
-                            <!--
                             <labels>
                                 <com.fluig.branch>staging</com.fluig.branch>
                             </labels>
-                            -->
                         </image>
                         <image>
                             <name>platform/manager</name>
