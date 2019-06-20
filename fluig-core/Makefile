@@ -4,6 +4,7 @@
 #
 
 SHELL = /bin/bash
+FLUIG_REPOSITORY ?= docker.fluig.com/
 
 # Rule "maven-fluig"
 .PHONY: maven-fluig
@@ -13,7 +14,7 @@ maven-fluig:
 # Rule "maven-lms"
 .PHONY: maven-lms
 maven-lms:
-	cd lms && mvn -DskipTests=true -Ddocker.skip.build clean install && $(MAKE) artifacts:generate && mvn docker:build && cd ..
+	cd lms && make -s maven:build -f MakeUtils -e MVN_ARGS="-DskipTests -DskipITs -Ddocker.skip.build -U -Dlms.tag=LOCAL -Ddocker.repository=${FLUIG_REPOSITORY}" && make artifacts:generate && make -s docker:build -f MakeUtils && cd ..
 
 # Rule "maven-boards"
 .PHONY: maven-boards
