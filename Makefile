@@ -32,6 +32,7 @@ prepare-nextgen:
 	cat common/git/Makefile.gitclean >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitmaster >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitstaging >> ${NEXTGEN_BASE_DIR}/Makefile ; \
+	cat common/git/Makefile.gitdevelop >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitpull >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/git/Makefile.gitstatus >> ${NEXTGEN_BASE_DIR}/Makefile ; \
 	cat common/docker/Makefile.build-local >> ${NEXTGEN_BASE_DIR}/Makefile ; \
