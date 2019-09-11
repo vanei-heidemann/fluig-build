@@ -6,7 +6,7 @@ gitdevelop:
                 if [ -d $${f}/.git ]; then \
                         echo $$f; \
                         echo "==================================="; \
-                        cd $$f && git checkout develop && cd ..; \
+                        cd $$f && git checkout develop || true && cd ..; \
                         echo " "; \
                 fi \
         done
