@@ -68,6 +68,7 @@ gitclone-core:
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-broker.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-templates.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-email.git ; \
+	git clone ssh://git@git.fluig.com:7999/fn/fluig-alert.git ; \
 	git clone ssh://git@git.fluig.com:7999/fn/fluig-notification.git
 
 # Rule "gitclone-pages"
