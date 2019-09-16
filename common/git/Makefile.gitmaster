@@ -6,7 +6,7 @@ gitmaster:
                 if [ -d $${f}/.git ]; then \
                         echo $$f; \
                         echo "==================================="; \
-                        cd $$f && git checkout master && cd ..; \
+                        cd $$f && git checkout master || true && cd ..; \
                         echo " "; \
                 fi \
         done
